@@ -433,7 +433,7 @@ sudo apt-get install transmission transmission-qt -y
 clear
 
 echo '[31/31] Installing GIMP 🖼'
-sudo add-apt-repository ppa:otto-kesselgulasch/gimp
+yes | sudo add-apt-repository ppa:otto-kesselgulasch/gimp
 sudo apt-get update
 sudo apt-get install gimp gimp-gmic gmic -y
 sudo apt-get install gimp-plugin-registry -y
