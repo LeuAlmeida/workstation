@@ -43,6 +43,8 @@ sh startup.sh
 * [VLC](https://www.videolan.org/vlc/) - Media player
 * [Transmission](https://transmissionbt.com/) - Torrent client
 * [Gimp](https://www.gimp.org/) - Open source image editor
+* [Reactotron](https://discord.com/) - Inspecting tool for ReactJS and React Native apps
+* [Discord](https://github.com/infinitered/reactotron) - Free channel chat
 
 ## Authors
 

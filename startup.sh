@@ -430,14 +430,25 @@ echo '[30/31] Installing Transmission 📩'
 sudo add-apt-repository ppa:transmissionbt/ppa
 sudo apt-get update
 sudo apt-get install transmission transmission-qt -y
+clear
 
 echo '[31/31] Installing GIMP 🖼'
 sudo add-apt-repository ppa:otto-kesselgulasch/gimp
 sudo apt-get update
 sudo apt-get install gimp gimp-gmic gmic -y
 sudo apt-get install gimp-plugin-registry -y
+clear
 
-echo 'Commiting changes 💬'
+echo '[32/31] Installing Reactotron ⚛'
+wget -c https://github.com/infinitered/reactotron/releases/download/v2.17.1/reactotron-app_2.17.1_amd64.deb
+sudo dpkg -i reactotron-app_2.17.1_amd64.deb
+clear
+
+echo '[33/32] Installing Discord 💬'
+sudo snap install discord --classic
+clear
+
+echo 'Commiting changes 🎈'
 source ~/.zshrc
 sudo dpkg --configure -a 
 sudo apt-get update --fix-missing
