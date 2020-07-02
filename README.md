@@ -52,7 +52,7 @@ sh startup.sh
 
 * **Olavio Lacerda** - Additions and modifications - [Olavio Lacerda](https://github.com/OlavioLacerda)
 
-* **Léu Almedia** - Additions and modifications - [Léu Almeida](https://github.com/LeuAlmeida)
+* **Léu Almeida** - Additions and modifications - [Léu Almeida](https://github.com/LeuAlmeida)
 
 ## License
 
