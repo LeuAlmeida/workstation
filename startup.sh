@@ -11,7 +11,7 @@ BLUE='\033[0;34m'
 PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 LIGHTGRAY='\033[0;37m'
-DARKGRAY='\033[1;30m'
+LIGHTGRAY='\033[1;30m'
 LIGHTRED='\033[1;31m'
 LIGHTGREEN='\033[1;32m'
 YELLOW='\033[1;33m'
@@ -41,13 +41,13 @@ echo "${LIGHTGREEN}[2/34] Installing git 😻'${NOCOLOR}"
 sudo apt install git -y
 
 echo "${ORANGE}What name do you want to use in GIT user.name?"
-echo "For example, mine will be '${DARKGRAY}Léu Almeida'${NOCOLOR}"
+echo "For example, mine will be '${LIGHTGRAY}Léu Almeida'${NOCOLOR}"
 read git_config_user_name
 git config --global user.name "$git_config_user_name"
 clear 
 
 echo "${ORANGE}What email do you want to use in GIT user.email?"
-echo "For example, mine will be '${DARKGRAY}leo@webid.net.br'${NOCOLOR}"
+echo "For example, mine will be '${LIGHTGRAY}leo@webid.net.br'${NOCOLOR}"
 read git_config_user_email
 git config --global user.email $git_config_user_email
 clear
@@ -592,4 +592,4 @@ sudo apt-get autoremove
 clear 
 
 echo "${YELLOW}All setup, enjoy! 😉${NOCOLOR}"
-echo "${DARKGRAY}You're welcome to contribute to the project on https://github.com/LeuAlmeida/ubuntu-workstation${NOCOLOR}"
+echo "${LIGHTGRAY}You're welcome to contribute to the project on https://github.com/LeuAlmeida/ubuntu-workstation${NOCOLOR}"
