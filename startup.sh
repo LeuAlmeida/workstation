@@ -23,7 +23,8 @@ WHITE='\033[1;37m'
 # ----------------------------------
 # Start of the script
 # ----------------------------------
-echo "${BLUE}Welcome! Let's start setting up your system. It could take more than 10 minutes, be patient, please 💙 ${NOCOLOR}"
+echo "${BLUE}Welcome! Let's start setting up your system. "
+echo "It could take more than 10 minutes, be patient, please 💙 ${NOCOLOR}"
 
 sudo apt-get update
 
