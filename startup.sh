@@ -41,13 +41,13 @@ echo "${LIGHTGREEN}[2/34] Installing git 😻'${NOCOLOR}"
 sudo apt install git -y
 
 echo "${ORANGE}What name do you want to use in GIT user.name?"
-echo "For example, mine will be \"${DARKGRAY}Léu Almeida\"${NOCOLOR}"
+echo "For example, mine will be '${DARKGRAY}Léu Almeida'${NOCOLOR}"
 read git_config_user_name
 git config --global user.name "$git_config_user_name"
 clear 
 
 echo "${ORANGE}What email do you want to use in GIT user.email?"
-echo "For example, mine will be \"${DARKGRAY}leo@webid.net.br\"${NOCOLOR}"
+echo "For example, mine will be '${DARKGRAY}leo@webid.net.br'${NOCOLOR}"
 read git_config_user_email
 git config --global user.email $git_config_user_email
 clear
@@ -217,7 +217,7 @@ code --install-extension yzhang.markdown-all-in-one
 # Spotify installation
 # ----------------------------------
 echo "${LIGHTGREEN}[6/34] Installing spotify 🎵'${NOCOLOR}"
-snap install spotify
+sudo snap install spotify
 
 # ----------------------------------
 # Google Chrome installation
@@ -294,6 +294,9 @@ sudo add-apt-repository ppa:openjdk-r/ppa
 sudo apt-get update
 sudo apt-get install openjdk-8-jdk
 sudo update-alternatives --config java
+
+echo ""
+
 echo "${LIGHTRED}Now you will need to install Android Studio manually on https://developer.android.com/studio${NOCOLOR}"
 
 echo "${LIGHTGREEN}Setting graphic libs${NOCOLOR}"
@@ -519,7 +522,7 @@ clear
 # Postbird installation
 # ----------------------------------
 echo "${LIGHTGREEN}[28/34] Installing Postbird 🐘${NOCOLOR}"
-sudo snap install postbird -y
+yes | sudo snap install postbird
 clear
 
 # ----------------------------------
