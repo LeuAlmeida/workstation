@@ -1,6 +1,24 @@
-# Linux Workstation Setup
+<h1 align="center">Linux Workstation Setup</h1>
 
-This configs were made based on [Erick Wendel's setup](https://github.com/ErickWendel/ew-ubuntu-setup) and my own needs as a JS Developer and other personal stuff.
+<blockquote align="center">
+This configs were made based on <a href="https://github.com/ErickWendel/ew-ubuntu-setup">Erick Wendel's setup</a> and my own needs as a JS Developer and other personal stuff.
+</blockquote>
+
+<p align="center">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-%237159c1">
+
+  <a href="https://leunardo.dev">
+    <img alt="Made by Léu Almeida" src="https://img.shields.io/badge/made%20by-Léu%20Almeida-%237159c1">
+  </a>
+  
+  <a href="https://github.com/LeuAlmeida/ubuntu-workstation/actions">
+    <img alt="Made by Léu Almeida" src="https://github.com/LeuAlmeida/ubuntu-workstation/workflows/CI/badge.svg">
+  </a>  
+</p>
+
+<p align="center">
+<img alt="Presentation" src=".github/presentation.gif" />
+</p>
 
 ## Getting Started
 
