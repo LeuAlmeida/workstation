@@ -21,7 +21,7 @@ This configs were made based on <a href="https://github.com/ErickWendel/ew-ubunt
 </p>
 
 <p align="center">
-<img alt="Presentation" src=".github/presentation.gif" />
+<img alt="Presentation" width="800" src=".github/presentation.gif" />
 </p>
 
 ## Getting Started
@@ -68,6 +68,7 @@ sh startup.sh
 - [Reactotron](https://discord.com/) - Inspecting tool for ReactJS and React Native apps
 - [Discord](https://github.com/infinitered/reactotron) - Free channel chat
 - [Terminalizer](https://github.com/faressoft/terminalizer) - Record your terminal and generate animated gif images
+- [Expo](https://docs.expo.io/) - A framework and a platform for universal React applications. 
 
 ## Authors
 
