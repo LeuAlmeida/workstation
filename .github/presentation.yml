@@ -1,0 +1,311 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  command: bash -l
+  cwd: /home/leunardo/Desktop/personal
+  env:
+    recording: true
+  cols: 150
+  rows: 49
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+  quality: 100
+  frameDelay: auto
+  maxIdleTime: 2000
+  frameBox:
+    type: floating
+    title: null
+    style:
+      border: 0px black solid
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+  cursorStyle: block
+  fontFamily: "Fira Code, Lucida Console, Ubuntu Mono, Monospace"
+  fontSize: 16
+  lineHeight: 1
+  letterSpacing: 0
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+# Records, feel free to edit them
+records:
+  - delay: 658
+    content: "\e]0;leunardo@leunardo: ~/Desktop/personal\a\e[01;32mleunardo@leunardo\e[00m:\e[01;34m~/Desktop/personal\e[00m$ "
+  - delay: 424
+    content: "\e[H\e[2J\e]0;leunardo@leunardo: ~/Desktop/personal\a\e[01;32mleunardo@leunardo\e[00m:\e[01;34m~/Desktop/personal\e[00m$ "
+  - delay: 493
+    content: g
+  - delay: 122
+    content: i
+  - delay: 65
+    content: t
+  - delay: 134
+    content: ' '
+  - delay: 64
+    content: c
+  - delay: 130
+    content: l
+  - delay: 156
+    content: o
+  - delay: 177
+    content: 'n'
+  - delay: 44
+    content: e
+  - delay: 92
+    content: ' '
+  - delay: 289
+    content: 'https://github.com/LeuAlmeida/ubuntu-workstation'
+  - delay: 340
+    content: .
+  - delay: 216
+    content: g
+  - delay: 117
+    content: i
+  - delay: 74
+    content: t
+  - delay: 235
+    content: "\r\nCloning into 'ubuntu-workstation'...\r\n"
+  - delay: 1004
+    content: "remote: Enumerating objects: 54, done.\e[K\r\nremote: Counting objects:   1% (1/54)\e[K\rremote: Counting objects:   3% (2/54)\e[K\rremote: Counting objects:   5% (3/54)\e[K\r"
+  - delay: 59
+    content: "remote: Counting objects:   7% (4/54)\e[K\rremote: Counting objects:   9% (5/54)\e[K\rremote: Counting objects:  11% (6/54)\e[K\rremote: Counting objects:  12% (7/54)\e[K\rremote: Counting objects:  14% (8/54)\e[K\rremote: Counting objects:  16% (9/54)\e[K\rremote: Counting objects:  18% (10/54)\e[K\rremote: Counting objects:  20% (11/54)\e[K\rremote: Counting objects:  22% (12/54)\e[K\rremote: Counting objects:  24% (13/54)\e[K\rremote: Counting objects:  25% (14/54)\e[K\rremote: Counting objects:  27% (15/54)\e[K\rremote: Counting objects:  29% (16/54)\e[K\rremote: Counting objects:  31% (17/54)\e[K\rremote: Counting objects:  33% (18/54)\e[K\rremote: Counting objects:  35% (19/54)\e[K\rremote: Counting objects:  37% (20/54)\e[K\rremote: Counting objects:  38% (21/54)\e[K\rremote: Counting objects:  40% (22/54)\e[K\rremote: Counting objects:  42% (23/54)\e[K\rremote: Counting objects:  44% (24/54)\e[K\rremote: Counting objects:  46% (25/54)\e[K\rremote: Counting objects:  48% (26/54)\e[K\rremote: Counting objects:  50% (27/54)\e[K\rremote: Counting objects:  51% (28/54)\e[K\rremote: Counting objects:  53% (29/54)\e[K\rremote: Counting objects:  55% (30/54)\e[K\rremote: Counting objects:  57% (31/54)\e[K\rremote: Counting objects:  59% (32/54)\e[K\rremote: Counting objects:  61% (33/54)\e[K\rremote: Counting objects:  62% (34/54)\e[K\rremote: Counting objects:  64% (35/54)\e[K\rremote: Counting objects:  66% (36/54)\e[K\rremote: Counting objects:  68% (37/54)\e[K\rremote: Counting objects:  70% (38/54)\e[K\rremote: Counting objects:  72% (39/54)\e[K\rremote: Counting objects:  74% (40/54)\e[K\rremote: Counting objects:  75% (41/54)\e[K\rremote: Counting objects:  77% (42/54)\e[K\rremote: Counting objects:  79% (43/54)\e[K\rremote: Counting objects:  81% (44/54)\e[K\rremote: Counting objects:  83% (45/54)\e[K\rremote: Counting objects:  85% (46/54)\e[K\rremote: Counting objects:  87% (47/54)\e[K\rremote: Counting objects:  88% (48/54)\e[K\rremote: Counting objects:  90% (49/54)\e[K\rremote: Counting objects:  92% (50/54)\e[K\rremote: Counting objects:  94% (51/54)\e[K\rremote: Counting objects:  96% (52/54)\e[K\rremote: Counting objects:  98% (53/54)\e[K\rremote: Counting objects: 100% (54/54)\e[K\rremote: Counting objects: 100% (54/54), done.\e[K\r\nremote: Compressing objects:   2% (1/37)\e[K\rremote: Compressing objects:   5% (2/37)\e[K\rremote: Compressing objects:   8% (3/37)\e[K\rremote: Compressing objects:  10% (4/37)\e[K\rremote: Compressing objects:  13% (5/37)\e[K\rremote: Compressing objects:  16% (6/37)\e[K\rremote: Compressing objects:  18% (7/37)\e[K\rremote: Compressing objects:  21% (8/37)\e[K\rremote: Compressing objects:  24% (9/37)\e[K\rremote: Compressing objects:  27% (10/37)\e[K\rremote: Compressing objects:  29% (11/37)\e[K\rremote: Compressing objects:  32% (12/37)\e[K\rremote: Compressing objects:  35% (13/37)\e[K\rremote: Compressing objects:  37% (14/37)\e[K\rremote: Compressing objects:  40% (15/37)\e[K\rremote: Compressing objects:  43% (16/37)\e[K\rremote: Compressing objects:  45% (17/37)\e[K\rremote: Compressing objects:  48% (18/37)\e[K\rremote: Compressing objects:  51% (19/37)\e[K\rremote: Compressing objects:  54% (20/37)\e[K\rremote: Compressing objects:  56% (21/37)\e[K\rremote: Compressing objects:  59% (22/37)\e[K\rremote: Compressing objects:  62% (23/37)\e[K\rremote: Compressing objects:  64% (24/37)\e[K\rremote: Compressing objects:  67% (25/37)\e[K\rremote: Compressing objects:  70% (26/37)\e[K\rremote: Compressing objects:  72% (27/37)\e[K\rremote: Compressing objects:  75% (28/37)\e[K\rremote: Compressing objects:  78% (29/37)\e[K\rremote: Compressing objects:  81% (30/37)\e[K\rremote: Compressing objects:  83% (31/37)\e[K\rremote: Compressing objects:  86% (32/37)\e[K\rremote: Compressing objects:  89% (33/37)\e[K\rremote: Compressing objects:  91% (34/37)\e[K\rremote: Compressing objects:  94% (35/37)\e[K\rremote: Compressing objects:  97% (36/37)\e[K\rremote: Compressing objects: 100% (37/37)\e[K\rremote: Compressing objects: 100% (37/37), done.\e[K\r\n"
+  - delay: 54
+    content: "Unpacking objects:   1% (1/54)   \rUnpacking objects:   3% (2/54)   \rUnpacking objects:   5% (3/54)   \rUnpacking objects:   7% (4/54)   \rUnpacking objects:   9% (5/54)   \rUnpacking objects:  11% (6/54)   \rUnpacking objects:  12% (7/54)   \rUnpacking objects:  14% (8/54)   \rUnpacking objects:  16% (9/54)   \rUnpacking objects:  18% (10/54)   \rUnpacking objects:  20% (11/54)   \rUnpacking objects:  22% (12/54)   \rUnpacking objects:  24% (13/54)   \rUnpacking objects:  25% (14/54)   \rUnpacking objects:  27% (15/54)   \rUnpacking objects:  29% (16/54)   \rUnpacking objects:  31% (17/54)   \rUnpacking objects:  33% (18/54)   \rUnpacking objects:  35% (19/54)   \r"
+  - delay: 108
+    content: "remote: Total 54 (delta 22), reused 42 (delta 15), pack-reused 0\e[K\r\nUnpacking objects:  37% (20/54)   \rUnpacking objects:  38% (21/54)   \rUnpacking objects:  40% (22/54)   \rUnpacking objects:  42% (23/54)   \rUnpacking objects:  44% (24/54)   \rUnpacking objects:  46% (25/54)   \rUnpacking objects:  48% (26/54)   \rUnpacking objects:  50% (27/54)   \rUnpacking objects:  51% (28/54)   \rUnpacking objects:  53% (29/54)   \rUnpacking objects:  55% (30/54)   \rUnpacking objects:  57% (31/54)   \rUnpacking objects:  59% (32/54)   \rUnpacking objects:  61% (33/54)   \rUnpacking objects:  62% (34/54)   \rUnpacking objects:  64% (35/54)   \rUnpacking objects:  66% (36/54)   \rUnpacking objects:  68% (37/54)   \rUnpacking objects:  70% (38/54)   \rUnpacking objects:  72% (39/54)   \rUnpacking objects:  74% (40/54)   \rUnpacking objects:  75% (41/54)   \rUnpacking objects:  77% (42/54)   \rUnpacking objects:  79% (43/54)   \rUnpacking objects:  81% (44/54)   \rUnpacking objects:  83% (45/54)   \rUnpacking objects:  85% (46/54)   \rUnpacking objects:  87% (47/54)   \rUnpacking objects:  88% (48/54)   \rUnpacking objects:  90% (49/54)   \rUnpacking objects:  92% (50/54)   \rUnpacking objects:  94% (51/54)   \rUnpacking objects:  96% (52/54)   \rUnpacking objects:  98% (53/54)   \rUnpacking objects: 100% (54/54)   \rUnpacking objects: 100% (54/54), done.\r\n"
+  - delay: 23
+    content: "\e]0;leunardo@leunardo: ~/Desktop/personal\a\e[01;32mleunardo@leunardo\e[00m:\e[01;34m~/Desktop/personal\e[00m$ "
+  - delay: 733
+    content: "\e[H\e[2J\e]0;leunardo@leunardo: ~/Desktop/personal\a\e[01;32mleunardo@leunardo\e[00m:\e[01;34m~/Desktop/personal\e[00m$ "
+  - delay: 261
+    content: c
+  - delay: 61
+    content: d
+  - delay: 35
+    content: ' '
+  - delay: 273
+    content: u
+  - delay: 144
+    content: b
+  - delay: 74
+    content: u
+  - delay: 127
+    content: ntu-workstation/
+  - delay: 380
+    content: "\r\n\e]0;leunardo@leunardo: ~/Desktop/personal/ubuntu-workstation\a\e[01;32mleunardo@leunardo\e[00m:\e[01;34m~/Desktop/personal/ubuntu-workstation\e[00m$ "
+  - delay: 888
+    content: "\e[H\e[2J\e]0;leunardo@leunardo: ~/Desktop/personal/ubuntu-workstation\a\e[01;32mleunardo@leunardo\e[00m:\e[01;34m~/Desktop/personal/ubuntu-workstation\e[00m$ "
+  - delay: 1431
+    content: "\a"
+  - delay: 361
+    content: l
+  - delay: 77
+    content: s
+  - delay: 118
+    content: "\r\nLICENSE.md  README.md  startup.sh\r\n\e]0;leunardo@leunardo: ~/Desktop/personal/ubuntu-workstation\a\e[01;32mleunardo@leunardo\e[00m:\e[01;34m~/Desktop/personal/ubuntu-workstation\e[00m$ "
+  - delay: 931
+    content: s
+  - delay: 178
+    content: h
+  - delay: 86
+    content: ' '
+  - delay: 91
+    content: s
+  - delay: 143
+    content: t
+  - delay: 60
+    content: a
+  - delay: 141
+    content: r
+  - delay: 142
+    content: t
+  - delay: 43
+    content: u
+  - delay: 210
+    content: p
+  - delay: 192
+    content: .
+  - delay: 109
+    content: s
+  - delay: 155
+    content: h
+  - delay: 451
+    content: "\r\n\e[0;34mWelcome! Let's start setting up your system. It could take more than 10 minutes, be patient, please \U0001F499 \e[0m\r\n"
+  - delay: 27
+    content: '[sudo] password for leunardo: '
+  - delay: 2214
+    content: "\r\n"
+  - delay: 188
+    content: "\r0% [Working]"
+  - delay: 97
+    content: "\r            \rHit:1 http://br.archive.ubuntu.com/ubuntu bionic InRelease\r\n\r0% [Connecting to security.ubuntu.com] [Connecting to download.docker.com (2600:9000:21ed:f000:3:db06:4200:93a1)] [Connecting to dl.bintray.com] [Con\r                                                                                                                                                     \rHit:2 http://linux.teamviewer.com/deb stable InRelease\r\n\r0% [Waiting for headers] [Connecting to security.ubuntu.com] [Connecting to download.docker.com (2600:9000:21ed:f000:3:db06:4200:93a1)] [Connecting t\r0% [1 InRelease gpgv 242 kB] [Waiting for headers] [Connecting to security.ubuntu.com] [Connecting to download.docker.com (2600:9000:21ed:f000:3:db06"
+  - delay: 14
+    content: "\r                                                                                                                                                     \rHit:3 http://br.archive.ubuntu.com/ubuntu bionic-updates InRelease\r\n\r0% [1 InRelease gpgv 242 kB] [Connecting to security.ubuntu.com] [Connected to download.docker.com (2600:9000:21ed:f000:3:db06:4200:93a1)] [Connectin"
+  - delay: 18
+    content: "\r                                                                                                                                                     \rHit:4 http://br.archive.ubuntu.com/ubuntu bionic-backports InRelease\r\n\r0% [1 InRelease gpgv 242 kB] [Connecting to security.ubuntu.com] [Connected to download.docker.com (2600:9000:21ed:f000:3:db06:4200:93a1)] [Connectin"
+  - delay: 39
+    content: "\r                                                                                                                                                     \rHit:5 https://download.docker.com/linux/ubuntu bionic InRelease\r\n\r0% [1 InRelease gpgv 242 kB] [Connecting to security.ubuntu.com] [Waiting for headers] [Connecting to dl.bintray.com] [Connecting to ppa.launchpad.ne"
+  - delay: 35
+    content: "\r                                                                                                                                                     \rHit:6 http://dl.google.com/linux/chrome/deb stable InRelease\r\n\r0% [1 InRelease gpgv 242 kB] [Connecting to security.ubuntu.com (2001:67c:1562::18)] [Connecting to dl.bintray.com (54.148.239.199)] [Connecting to p"
+  - delay: 31
+    content: "\r0% [Connecting to security.ubuntu.com (2001:67c:1562::18)] [Connecting to dl.bintray.com (54.148.239.199)] [Connecting to ppa.launchpad.net (2001:67c\r0% [2 InRelease gpgv 11,0 kB] [Connecting to security.ubuntu.com (2001:67c:1562::18)] [Connecting to dl.bintray.com (54.148.239.199)] [Connecting to "
+  - delay: 16
+    content: "\r                                                                                                                                                     \rGet:7 https://dl.yarnpkg.com/debian stable InRelease [17,1 kB]\r\n\r0% [2 InRelease gpgv 11,0 kB] [Connecting to security.ubuntu.com (2001:67c:1562::18)] [Connecting to dl.bintray.com (54.148.239.199)] [Connecting to \r0% [2 InRelease gpgv 11,0 kB] [Connecting to security.ubuntu.com (2001:67c:1562::18)] [Connecting to dl.bintray.com (54.148.239.199)] [Connecting to "
+  - delay: 65
+    content: "\r0% [Connecting to security.ubuntu.com (2001:67c:1562::18)] [Connecting to dl.bintray.com (54.148.239.199)] [Connecting to ppa.launchpad.net (2001:67c\r0% [3 InRelease gpgv 88,7 kB] [Connecting to security.ubuntu.com (2001:67c:1562::18)] [Connecting to dl.bintray.com (54.148.239.199)] [Connecting to "
+  - delay: 99
+    content: "\r0% [Waiting for headers] [Connected to dl.bintray.com (54.148.239.199)] [Connecting to ppa.launchpad.net (2001:67c:1560:8008::15)] [Connecting to pac\r0% [4 InRelease gpgv 74,6 kB] [Waiting for headers] [Connected to dl.bintray.com (54.148.239.199)] [Connecting to ppa.launchpad.net (2001:67c:1560:80"
+  - delay: 71
+    content: "\r                                                                                                                                                     \rGet:8 http://security.ubuntu.com/ubuntu bionic-security InRelease [88,7 kB]\r\n\r0% [4 InRelease gpgv 74,6 kB] [8 InRelease 1.118 B/88,7 kB 1%] [Connected to dl.bintray.com (54.148.239.199)] [Waiting for headers] [Connecting to pa"
+  - delay: 29
+    content: "\r0% [8 InRelease 8.258 B/88,7 kB 9%] [Connected to dl.bintray.com (54.148.239.199)] [Waiting for headers] [Connecting to packages.microsoft.com (40.11\r0% [5 InRelease gpgv 64,4 kB] [8 InRelease 8.258 B/88,7 kB 9%] [Connected to dl.bintray.com (54.148.239.199)] [Waiting for headers] [Connecting to pa"
+  - delay: 99
+    content: "\r                                                                                                                                                     \r0% [8 InRelease 14,0 kB/88,7 kB 16%] [Connected to dl.bintray.com (54.148.239.199)] [Waiting for headers] [Waiting for headers]\r0% [6 InRelease gpgv 1.811 B] [8 InRelease 14,0 kB/88,7 kB 16%] [Connected to dl.bintray.com (54.148.239.199)] [Waiting for headers] [Waiting for hea"
+  - delay: 41
+    content: "\r                                                                                                                                                     \rHit:9 http://ppa.launchpad.net/openjdk-r/ppa/ubuntu bionic InRelease\r\n\r                                                                                                                                                     \r0% [6 InRelease gpgv 1.811 B] [8 InRelease 19,7 kB/88,7 kB 22%] [Connected to dl.bintray.com (54.148.239.199)] [Waiting for headers]"
+  - delay: 49
+    content: "\r0% [8 InRelease 32,5 kB/88,7 kB 37%] [Connected to dl.bintray.com (54.148.239.199)] [Connecting to ppa.launchpad.net (2001:67c:1560:8008::15)] [Waiti\r0% [7 InRelease gpgv 17,1 kB] [8 InRelease 34,0 kB/88,7 kB 38%] [Connected to dl.bintray.com (54.148.239.199)] [Connecting to ppa.launchpad.net (2001"
+  - delay: 41
+    content: "\r                                                                                                                                                     \rHit:10 http://packages.microsoft.com/repos/vscode stable InRelease\r\n\r0% [7 InRelease gpgv 17,1 kB] [8 InRelease 42,5 kB/88,7 kB 48%] [Connected to dl.bintray.com (54.148.239.199)] [Connecting to ppa.launchpad.net (2001"
+  - delay: 48
+    content: "\r                                                                                                                                                     \rErr:7 https://dl.yarnpkg.com/debian stable InRelease\r\n  The following signatures were invalid: EXPKEYSIG 23E7166788B63E1E Yarn Packaging <yarn@dan.cx>\r\n\r                                                                                                                                                     \r0% [8 InRelease 48,2 kB/88,7 kB 54%] [Connected to dl.bintray.com (54.148.239.199)] [Connecting to ppa.launchpad.net (2001:67c:1560:8008::15)]\r0% [9 InRelease gpgv 15,4 kB] [8 InRelease 48,2 kB/88,7 kB 54%] [Connected to dl.bintray.com (54.148.239.199)] [Connecting to ppa.launchpad.net (2001"
+  - delay: 95
+    content: "\r                                                                                                                                                     \r0% [8 InRelease 76,8 kB/88,7 kB 87%] [Waiting for headers] [Connecting to ppa.launchpad.net (2001:67c:1560:8008::15)]\r                                                                                                                     \r0% [10 InRelease gpgv 3.958 B] [8 InRelease 76,8 kB/88,7 kB 87%] [Waiting for headers] [Waiting for headers]"
+  - delay: 31
+    content: "\r                                                                                                            \r0% [10 InRelease gpgv 3.958 B] [Waiting for headers] [Waiting for headers]"
+  - delay: 58
+    content: "\r                                                                          \r0% [Waiting for headers] [Waiting for headers]\r0% [8 InRelease gpgv 88,7 kB] [Waiting for headers] [Waiting for headers]"
+  - delay: 89
+    content: "\r                                                                         \rIgn:11 https://dl.bintray.com/getinsomnia/Insomnia  InRelease\r\n\r                                                                         \r0% [8 InRelease gpgv 88,7 kB] [Waiting for headers]"
+  - delay: 17
+    content: "\r                                                   \r0% [Waiting for headers] [Waiting for headers]"
+  - delay: 29
+    content: "\r                                              \rHit:12 http://ppa.launchpad.net/otto-kesselgulasch/gimp/ubuntu bionic InRelease\r\n\r                                              \r0% [Waiting for headers]\r0% [12 InRelease gpgv 15,4 kB] [Waiting for headers]"
+  - delay: 86
+    content: "\r                                                    \r0% [Waiting for headers]"
+  - delay: 100
+    content: "\r                        \rGet:13 https://dl.bintray.com/getinsomnia/Insomnia  Release [815 B]\r\n\r0% [13 Release 815 B/815 B 100%]\r                                \r0% [Working]\r0% [Release.gpg gpgv 815 B]"
+  - delay: 90
+    content: "\r                           \r0% [Working]\r            \rFetched 89,5 kB in 1s (64,4 kB/s)\r\n"
+  - delay: 144
+    content: "\rReading package lists... 0%\r"
+  - delay: 16
+    content: "\rReading package lists... 0%\r"
+  - delay: 9
+    content: "\rReading package lists... 0%\r"
+  - delay: 33
+    content: "\rReading package lists... 2%\r"
+  - delay: 5
+    content: "\rReading package lists... 2%\r"
+  - delay: 32
+    content: "\rReading package lists... 5%\r\rReading package lists... 5%\r"
+  - delay: 9
+    content: "\rReading package lists... 7%\r\rReading package lists... 7%\r\rReading package lists... 7%\r\rReading package lists... 7%\r\rReading package lists... 7%\r\rReading package lists... 7%\r\rReading package lists... 7%\r\rReading package lists... 7%\r"
+  - delay: 387
+    content: "\rReading package lists... 30%\r\rReading package lists... 30%\r"
+  - delay: 230
+    content: "\rReading package lists... 47%\r"
+  - delay: 89
+    content: "\rReading package lists... 54%\r\rReading package lists... 54%\r"
+  - delay: 99
+    content: "\rReading package lists... 66%\r\rReading package lists... 66%\r"
+  - delay: 8
+    content: "\rReading package lists... 67%\r\rReading package lists... 67%\r"
+  - delay: 5
+    content: "\rReading package lists... 67%\r\rReading package lists... 67%\r\rReading package lists... 67%\r\rReading package lists... 67%\r"
+  - delay: 63
+    content: "\rReading package lists... 71%\r\rReading package lists... 71%\r"
+  - delay: 51
+    content: "\rReading package lists... 73%\r\rReading package lists... 73%\r"
+  - delay: 18
+    content: "\rReading package lists... 75%\r\rReading package lists... 75%\r\rReading package lists... 76%\r\rReading package lists... 76%\r\rReading package lists... 76%\r\rReading package lists... 76%\r\rReading package lists... 76%\r\rReading package lists... 76%\r"
+  - delay: 73
+    content: "\rReading package lists... 80%\r\rReading package lists... 80%\r"
+  - delay: 43
+    content: "\rReading package lists... 83%\r\rReading package lists... 83%\r"
+  - delay: 14
+    content: "\rReading package lists... 85%\r\rReading package lists... 85%\r\rReading package lists... 85%\r\rReading package lists... 85%\r\rReading package lists... 85%\r\rReading package lists... 85%\r\rReading package lists... 85%\r\rReading package lists... 85%\r\rReading package lists... 85%\r\rReading package lists... 85%\r\rReading package lists... 85%\r\rReading package lists... 85%\r\rReading package lists... 85%\r\rReading package lists... 85%\r\rReading package lists... 85%\r\rReading package lists... 85%\r\rReading package lists... 85%\r\rReading package lists... 85%\r\rReading package lists... 85%\r\rReading package lists... 85%\r"
+  - delay: 26
+    content: "\rReading package lists... 88%\r\rReading package lists... 88%\r"
+  - delay: 16
+    content: "\rReading package lists... 89%\r\rReading package lists... 89%\r"
+  - delay: 29
+    content: "\rReading package lists... 91%\r\rReading package lists... 91%\r\rReading package lists... 92%\r\rReading package lists... 92%\r\rReading package lists... 92%\r\rReading package lists... 92%\r\rReading package lists... 92%\r\rReading package lists... 92%\r"
+  - delay: 24
+    content: "\rReading package lists... 94%\r\rReading package lists... 94%\r"
+  - delay: 24
+    content: "\rReading package lists... 96%\r\rReading package lists... 96%\r"
+  - delay: 11
+    content: "\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r"
+  - delay: 34
+    content: "\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r\rReading package lists... 98%\r"
+  - delay: 52
+    content: "\rReading package lists... 98%\r\rReading package lists... 98%\r"
+  - delay: 13
+    content: "\rReading package lists... 99%\r"
+  - delay: 84
+    content: "\rReading package lists... Done\r\r\n"
+  - delay: 83
+    content: "W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://dl.yarnpkg.com/debian stable InRelease: The following signatures were invalid: EXPKEYSIG 23E7166788B63E1E Yarn Packaging <yarn@dan.cx>\r\nW: Failed to fetch https://dl.yarnpkg.com/debian/dists/stable/InRelease  The following signatures were invalid: EXPKEYSIG 23E7166788B63E1E Yarn Packaging <yarn@dan.cx>\r\nW: Some index files failed to download. They have been ignored, or old ones used instead.\r\n"
+  - delay: 13
+    content: "\e[1;32m[1/34] Installing curl \U0001F50C'\e[0m\r\n"
+  - delay: 117
+    content: "\rReading package lists... 0%\r"
+  - delay: 33
+    content: "\rReading package lists... 100%\r\rReading package lists... Done\r\r\n"
+  - delay: 8
+    content: "\rBuilding dependency tree... 0%\r\rBuilding dependency tree... 0%\r"
+  - delay: 39
+    content: "\rBuilding dependency tree... 50%\r\rBuilding dependency tree... 50%\r"
+  - delay: 222
+    content: "\rBuilding dependency tree       \r\r\n\rReading state information... 0%\r\rReading state information... 0%\r\rReading state information... Done\r\r\n"
+  - delay: 44
+    content: "curl is already the newest version (7.58.0-2ubuntu3.9).\r\n"
+  - delay: 179
+    content: "The following packages were automatically installed and are no longer required:\r\n  libegl1-mesa libgegl-0.3-0 python-cairo python-gobject-2 python-gtk2\r\nUse 'sudo apt autoremove' to remove them.\r\n"
+  - delay: 417
+    content: "0 upgraded, 0 newly installed, 0 to remove and 29 not upgraded.\r\n"
+  - delay: 28
+    content: "\e[1;32m[2/34] Installing git \U0001F63B'\e[0m\r\n"
+  - delay: 50
+    content: "\rReading package lists... 0%\r"
+  - delay: 29
+    content: "\rReading package lists... 100%\r\rReading package lists... Done\r\r\n"
+  - delay: 8
+    content: "\rBuilding dependency tree... 0%\r\rBuilding dependency tree... 0%\r"
+  - delay: 37
+    content: "\rBuilding dependency tree... 50%\r\rBuilding dependency tree... 50%\r"
+  - delay: 219
+    content: "\rBuilding dependency tree       \r\r\n\rReading state information... 0%\r\rReading state information... 0%\r\rReading state information... Done\r\r\n"
+  - delay: 41
+    content: "git is already the newest version (1:2.17.1-1ubuntu0.7).\r\n"
+  - delay: 173
+    content: "The following packages were automatically installed and are no longer required:\r\n  libegl1-mesa libgegl-0.3-0 python-cairo python-gobject-2 python-gtk2\r\nUse 'sudo apt autoremove' to remove them.\r\n"
+  - delay: 52
+    content: "0 upgraded, 0 newly installed, 0 to remove and 29 not upgraded.\r\n"
