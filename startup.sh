@@ -23,58 +23,61 @@ WHITE='\033[1;37m'
 # ----------------------------------
 # Start of the script
 # ----------------------------------
-
-echo "Welcome! Let's start setting up your system. It could take more than 10 minutes, be patient, please 💙"
+echo "${BLUE}Welcome! Let's start setting up your system. It could take more than 10 minutes, be patient, please 💙 ${NOCOLOR}"
 
 sudo apt-get update
 
 # ----------------------------------
 # Curl installation
 # ----------------------------------
-
-echo '[1/34] Installing curl 🔌' 
+echo "${LIGHTGREEN}[1/34] Installing curl 🔌'${NOCOLOR}"
 sudo apt install curl -y
 
 # ----------------------------------
 # Git installation
 # ----------------------------------
-
-echo '[2/34] Installing git 😻' 
+echo "${LIGHTGREEN}[2/34] Installing git 😻'${NOCOLOR}"
 sudo apt install git -y
 
-echo "What name do you want to use in GIT user.name?"
-echo "For example, mine will be \"Léu Almeida\""
+echo "${ORANGE}What name do you want to use in GIT user.name?"
+echo "For example, mine will be \"${DARKGRAY}Léu Almeida\"${NOCOLOR}"
 read git_config_user_name
 git config --global user.name "$git_config_user_name"
 clear 
 
-echo "What email do you want to use in GIT user.email?"
-echo "For example, mine will be \"leo@webid.net.br\""
+echo "${ORANGE}What email do you want to use in GIT user.email?"
+echo "For example, mine will be \"${DARKGRAY}leo@webid.net.br\"${NOCOLOR}"
 read git_config_user_email
 git config --global user.email $git_config_user_email
 clear
 
-echo "Generating a SSH Key"
+echo "${LIGHTGREN}Generating a SSH Key${NOCOLOR}"
 ssh-keygen -t rsa -b 4096 -C $git_config_user_email
 ssh-add ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub | xclip -selection clipboard
 
-echo 'Enabling workspaces for both screens' 
+echo "${LIGHTGREEN}Enabling workspaces for both screens${NOCOLOR}" 
 gsettings set org.gnome.mutter workspaces-only-on-primary false
 
-echo '[3/34] Installing zsh ⚡'
+# ----------------------------------
+# ZSH installation
+# ----------------------------------
+echo "${LIGHTGREEN}[3/34] Installing zsh ⚡${NOCOLOR}"
 sudo apt-get install zsh -y
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 chsh -s /bin/zsh
 
-echo '[4/34] Installing tool to handle clipboard via CLI'
+echo "${LIGHTGREEN}[4/34] Installing tool to handle clipboard via CLI${NOCOLOR}"
 sudo apt-get install xclip -y
 
 export alias pbcopy='xclip -selection clipboard'
 export alias pbpaste='xclip -selection clipboard -o'
 source ~/.zshrc
 
-echo '[5/34] Installing VsCode 💼'
+# ----------------------------------
+# VsCode installation
+# ----------------------------------
+echo "${LIGHTGREEN}[5/34] Installing VsCode 💼${NOCOLOR}"
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
@@ -82,8 +85,7 @@ sudo apt-get install apt-transport-https -y
 sudo apt-get update
 sudo apt-get install code -y # or code-insiders
 
-
-echo 'Adding VSCode settings' 
+echo "${LIGHTGREEN}Adding VSCode settings${NOCOLOR}" 
 cat <<EOF >  ~/.config/Code/User/settings.json
 {
   "terminal.integrated.fontSize": 14,
@@ -183,7 +185,7 @@ cat <<EOF >  ~/.config/Code/User/settings.json
 }
 EOF
 
-echo 'Installing VSCode Extensions'
+echo "${LIGHTGREEN}Installing VSCode Extensions${NOCOLOR}"
 code --install-extension alexcvzz.vscode-sqlite
 code --install-extension basarat.god
 code --install-extension bmewburn.vscode-intelephense-client
@@ -210,14 +212,23 @@ code --install-extension rocketseat.theme-omni
 code --install-extension silvenon.mdx
 code --install-extension yzhang.markdown-all-in-one
 
-echo '[6/34] Installing spotify 🎵' 
+# ----------------------------------
+# Spotify installation
+# ----------------------------------
+echo "${LIGHTGREEN}[6/34] Installing spotify 🎵'${NOCOLOR}"
 snap install spotify
 
-echo '[7/34] Installing Google Chrome 🖥' 
+# ----------------------------------
+# Google Chrome installation
+# ----------------------------------
+echo "${LIGHTGREEN}[7/34] Installing Google Chrome 🖥'${NOCOLOR}"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 
-echo '[8/34] Installing NVM ⏩' 
+# ----------------------------------
+# NVM installation
+# ----------------------------------
+echo "${LIGHTGREEN}[8/34] Installing NVM ⏩'${NOCOLOR}"
 sh -c "$(curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash)"
 
 export NVM_DIR="$HOME/.nvm" && (
@@ -237,53 +248,74 @@ echo '\nexport NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nv
 
 source ~/.zshrc
 
-echo "[9/34] Installing Node.js 😎"
+# ----------------------------------
+# Node.js installation
+# ----------------------------------
+echo "${LIGHTGREEN}[9/34] Installing Node.js 😎${NOCOLOR}"
 nvm --version
 nvm install 12.18.2
 nvm alias default 12.18.2
 node --version
 npm --version
 
-echo '[10/34] Installing Typescript ⚡'
+# ----------------------------------
+# Typescript installation
+# ----------------------------------
+echo "${LIGHTGREEN}[10/34] Installing Typescript ⚡${NOCOLOR}"
 npm install -g typescript
 
-echo '[11/34] Installing Create React App ⚡'
+# ----------------------------------
+# ReactJS CRA installation
+# ----------------------------------
+echo "${LIGHTGREEN}[11/34] Installing Create React App ⚡${NOCOLOR}"
 npm install -g create-react-app
 
-echo '[12/34] Installing Gatsby ⚡'
+# ----------------------------------
+# GatsbyJS installation
+# ----------------------------------
+echo "${LIGHTGREEN}[12/34] Installing GatsbyJS ⚡${NOCOLOR}"
 npm install -g gatsby-cli
 
-echo '[13/34] Installing Yarn ⚡'
+echo "${LIGHTGREEN}[13/34] Installing Yarn ⚡${NOCOLOR}"
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt install yarn
 clear
 
-echo '[14/34] Installing React Native CLI 📲'
+# ----------------------------------
+# React Native installation
+# ----------------------------------
+echo "${LIGHTGREEN}[14/34] Installing React Native CLI 📲${NOCOLOR}"
 sudo npm install -g react-native-cli
 
-echo 'Installing JDK (Java Dvelopment Kit)'
+echo "${LIGHTGREEN}Installing JDK (Java Dvelopment Kit)${NOCOLOR}"
 sudo add-apt-repository ppa:openjdk-r/ppa
 sudo apt-get update
 sudo apt-get install openjdk-8-jdk
 sudo update-alternatives --config java
-echo 'Now you will need to install Android Studio manually on https://developer.android.com/studio'
+echo "${LIGHTRED}Now you will need to install Android Studio manually on https://developer.android.com/studio${NOCOLOR}"
 
-echo 'Setting graphic libs'
+echo "${LIGHTGREEN}Setting graphic libs${NOCOLOR}"
 sudo apt-get install gcc-multilib lib32z1 lib32stdc++6
 
-echo '[15/34] Installing Autosuggestions ⌨' 
+# ----------------------------------
+# Autosuggestions installation
+# ----------------------------------
+echo "${LIGHTGREEN}[15/34] Installing Autosuggestions ⌨${NOCOLOR}"
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 source ~/.zshrc
 
-echo '[16/34] Installing theme'
+# ----------------------------------
+# ZSH Themes installation
+# ----------------------------------
+echo "${LIGHTGREEN}[16/34] Installing theme${NOCOLOR}"
 sudo apt install fonts-firacode -y
 git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
 ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 sed -i 's/.*ZSH_THEME=.*/ZSH_THEME="spaceship"/g' ~/.zshrc
 
-echo 'Setting Spaceship configs'
+echo "${LIGHTGREEN}Setting Spaceship configs${NOCOLOR}"
 cat <<EOF >> ~/.zshrc
 SPACESHIP_PROMPT_ORDER=(
   user          # Username section
@@ -313,7 +345,7 @@ zplugin light zsh-users/zsh-autosuggestions
 zplugin light zsh-users/zsh-completions
 EOF
 
-echo 'Installing ZSH Plugins'
+echo "${LIGHTGREEN}Installing ZSH Plugins${NOCOLOR}"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 cat <<EOF >> ~/.zshrc
 zinit light zdharma/fast-syntax-highlighting
@@ -322,23 +354,29 @@ zinit light zsh-users/zsh-completions
 EOF
 source ~/.zshrc
 
-echo '[17/34] Installing Franz 💬' 
+# ----------------------------------
+# Franz installation
+# ----------------------------------
+echo "${LIGHTGREEN}[17/34] Installing Franz 💬'${NOCOLOR}"
 wget https://github.com/meetfranz/franz/releases/download/v5.1.0/franz_5.1.0_amd64.deb -O franz.deb
 sudo dpkg -i franz.debchristian-kohler.path-intellisense
 sudo apt-get install -y -f 
 
-echo '[18/34] Installing Hyper'
+# ----------------------------------
+# Hyper installation
+# ----------------------------------
+echo "${LIGHTGREEN}[18/34] Installing Hyper${NOCOLOR}"
 sudo apt-get install gdebi
 wget https://hyper-updates.now.sh/download/linux_deb
 sudo gdebi linux_deb
 
-echo 'Installing Omni theme'
+echo "${LIGHTGREEN}Installing Omni theme${NOCOLOR}"
 git clone https://github.com/getomni/hyper-omni ~/.hyper_plugins/local/hyper-omni
 
-echo 'Installing Font Ligatures'
+echo "${LIGHTGREEN}Installing Font Ligatures${NOCOLOR}"
 hyper i hyper-font-ligatures
 
-echo 'Implementing Hyper settings'
+echo "${LIGHTGREEN}Implementing Hyper settings${NOCOLOR}"
 cat <<EOF > ~/.hyper.js
 module.exports = {
   config: {
@@ -397,7 +435,10 @@ module.exports = {
 };
 EOF
 
-echo '[19/34] Installing Docker 🐳' 
+# ----------------------------------
+# Docker installation
+# ----------------------------------
+echo "${LIGHTGREEN}[19/34] Installing Docker 🐳'${NOCOLOR}"
 sudo apt-get remove docker docker-engine docker.io
 sudo apt install docker.io -y
 sudo systemctl start docker
@@ -407,41 +448,65 @@ docker --version
 chmod 777 /var/run/docker.sock
 docker run hello-world
 
-echo '[20/34] Installing docker-compose 🍱' 
+# ----------------------------------
+# Docker Compose installation
+# ----------------------------------
+echo "${LIGHTGREEN}[20/34] Installing docker-compose 🍱'${NOCOLOR}"
 sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
-echo '[21/34] Installing kubectl ⏹'
+# ----------------------------------
+# Kubectl installation
+# ----------------------------------
+echo "${LIGHTGREEN}[21/34] Installing kubectl ⏹${NOCOLOR}"
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 
-echo '[22/34] Installing heroku-cli 💜'
+# ----------------------------------
+# Heroku CLI installation
+# ----------------------------------
+echo "${LIGHTGREEN}[22/34] Installing heroku-cli 💜${NOCOLOR}"
 curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
 heroku --version
 
-echo '[23/34] Installing aws-cli 💛' 
+# ----------------------------------
+# AWS CLI installation
+# ----------------------------------
+echo "${LIGHTGREEN}[23/34] Installing aws-cli 💛'${NOCOLOR}"
 sudo apt-get install awscli -y
 aws --version
 curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
 sudo dpkg -i session-manager-plugin.deb
 session-manager-plugin --version
 
-echo '[24/34] Installing fzf 🔎'
+# ----------------------------------
+# Fzf installation
+# ----------------------------------
+echo "${LIGHTGREEN}[24/34] Installing fzf 🔎${NOCOLOR}"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
 source ~/.zshrc
 
-echo '[25/34] Installing dbeaver ⌛'
+# ----------------------------------
+# Dbeaver installation
+# ----------------------------------
+echo "${LIGHTGREEN}[25/34] Installing dbeaver ⌛${NOCOLOR}"
 wget -c https://dbeaver.io/files/6.0.0/dbeaver-ce_6.0.0_amd64.deb
 sudo dpkg -i dbeaver-ce_6.0.0_amd64.deb
 sudo apt-get install -f
 clear
 
-echo '[26/34] Installing Robo3t 💚'
+# ----------------------------------
+# Robo3t installation
+# ----------------------------------
+echo "${LIGHTGREEN}[26/34] Installing Robo3t 💚${NOCOLOR}"
 snap install robo3t-snap
 clear
 
-echo '[27/34] Installing Insomnia 🎱' 
+# ----------------------------------
+# Insomnia installation
+# ----------------------------------
+echo "${LIGHTGREEN}[27/34] Installing Insomnia 🎱'${NOCOLOR}"
 echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" \
     | sudo tee -a /etc/apt/sources.list.d/insomnia.list
 wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc \
@@ -449,41 +514,72 @@ wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc \
 sudo apt-get install insomnia
 clear
 
-echo '[28/34] Installing Postbird 🐘'
+# ----------------------------------
+# Postbird installation
+# ----------------------------------
+echo "${LIGHTGREEN}[28/34] Installing Postbird 🐘${NOCOLOR}"
 sudo snap install postbird -y
 clear
 
-echo '[29/34] Installing VLC ⏯'
+# ----------------------------------
+# VLC installation
+# ----------------------------------
+echo "${LIGHTGREEN}[29/34] Installing VLC ⏯${NOCOLOR}"
 sudo apt install vlc -y
 sudo apt install vlc-plugin-access-extra libbluray-bdj libdvdcss2 -y
 
-echo '[30/34] Installing Transmission 📩'
+# ----------------------------------
+# Transmission installation
+# ----------------------------------
+echo "${LIGHTGREEN}[30/34] Installing Transmission 📩${NOCOLOR}"
 sudo add-apt-repository ppa:transmissionbt/ppa
 sudo apt-get update
 sudo apt-get install transmission transmission-qt -y
 clear
 
-echo '[31/34] Installing GIMP 🖼'
+# ----------------------------------
+# GIMP installation
+# ----------------------------------
+echo "${LIGHTGREEN}[31/34] Installing GIMP 🖼${NOCOLOR}"
 yes | sudo add-apt-repository ppa:otto-kesselgulasch/gimp
 sudo apt-get update
 sudo apt-get install gimp gimp-gmic gmic -y
 sudo apt-get install gimp-plugin-registry -y
 clear
 
-echo '[32/34] Installing Reactotron ⚛'
+# ----------------------------------
+# Reactotron installation
+# ----------------------------------
+echo "${LIGHTGREEN}[32/34] Installing Reactotron ⚛${NOCOLOR}"
 wget -c https://github.com/infinitered/reactotron/releases/download/v2.17.1/reactotron-app_2.17.1_amd64.deb
 sudo dpkg -i reactotron-app_2.17.1_amd64.deb
 clear
 
-echo '[33/34] Installing Discord 💬'
+# ----------------------------------
+# Discord installation
+# ----------------------------------
+echo "${LIGHTGREEN}[33/34] Installing Discord 💬${NOCOLOR}"
 sudo snap install discord --classic
 clear
 
-echo '[34/34] Installing Terminalizer 💅'
+# ----------------------------------
+# Terminalizer installation
+# ----------------------------------
+echo "${LIGHTGREEN}[34/34] Installing Terminalizer 💅${NOCOLOR}"
 npm install -g terminalizer
 clear
 
-echo 'Commiting changes 🎈'
+# ----------------------------------
+# Expo CLI installation
+# ----------------------------------
+echo "${LIGHTGREEN}[35/35] Installing Expo 📱${NOCOLOR}"
+npm install -g terminalizer
+clear
+
+# ----------------------------------
+# Finishing installation
+# ----------------------------------
+echo "${LIGHTGREEN}Commiting changes 🎈${NOCOLOR}"
 source ~/.zshrc
 sudo dpkg --configure -a 
 sudo apt-get update --fix-missing
@@ -491,4 +587,5 @@ sudo apt-get autoremove
 
 clear 
 
-echo 'All setup, enjoy! 😉'
+echo "${YELLOW}All setup, enjoy! 😉${NOCOLOR}"
+echo "${DARKGRAY}You're welcome to contribute to the project on https://github.com/LeuAlmeida/ubuntu-workstation${NOCOLOR}"
