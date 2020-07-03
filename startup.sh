@@ -11,7 +11,7 @@ BLUE='\033[0;34m'
 PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 LIGHTGRAY='\033[0;37m'
-LIGHTGRAY='\033[1;30m'
+DARKGRAY='\033[1;30m'
 LIGHTRED='\033[1;31m'
 LIGHTGREEN='\033[1;32m'
 YELLOW='\033[1;33m'
@@ -41,13 +41,13 @@ echo "${LIGHTGREEN}[2/34] Installing git 😻'${NOCOLOR}"
 sudo apt install git -y
 
 echo "${ORANGE}What name do you want to use in GIT user.name?"
-echo "For example, mine will be '${LIGHTGRAY}Léu Almeida'${NOCOLOR}"
+echo "For example, mine will be '${ORANGE}Léu Almeida'${NOCOLOR}"
 read git_config_user_name
 git config --global user.name "$git_config_user_name"
 clear 
 
 echo "${ORANGE}What email do you want to use in GIT user.email?"
-echo "For example, mine will be '${LIGHTGRAY}leo@webid.net.br'${NOCOLOR}"
+echo "For example, mine will be '${ORANGE}leo@webid.net.br'${NOCOLOR}"
 read git_config_user_email
 git config --global user.email $git_config_user_email
 clear
@@ -571,6 +571,62 @@ clear
 # ----------------------------------
 echo "${LIGHTGREEN}[34/34] Installing Terminalizer 💅${NOCOLOR}"
 npm install -g terminalizer
+
+cat <<EOF > ~/.terminalizer 
+command: null
+cwd: null
+env:
+  recording: true
+cols: auto
+rows: auto
+# Amount of times to repeat GIF
+# If value is -1, play once
+# If value is 0, loop indefinitely
+# If value is a positive number, loop n times
+repeat: 0
+quality: 100
+frameDelay: auto
+maxIdleTime: 2000
+frameBox:
+  type: floating
+  title: null
+  style:
+    border: 0px black solid
+watermark:
+  imagePath: null
+  style:
+    position: absolute
+    right: 15px
+    bottom: 15px
+    width: 100px
+    opacity: 0.9
+cursorStyle: block
+fontFamily: "Fira Code, Lucida Console, Ubuntu Mono, Monospace"
+fontSize: 14
+lineHeight: 1
+letterSpacing: 0
+theme:
+  background: "transparent"
+  foreground: "#afafaf"
+  cursor: "#c7c7c7"
+  black: "#232628"
+  red: "#fc4384"
+  green: "#b3e33b"
+  yellow: "#ffa727"
+  blue: "#75dff2"
+  magenta: "#ae89fe"
+  cyan: "#708387"
+  white: "#d5d5d0"
+  brightBlack: "#626566"
+  brightRed: "#ff7fac"
+  brightGreen: "#c8ed71"
+  brightYellow: "#ebdf86"
+  brightBlue: "#75dff2"
+  brightMagenta: "#ae89fe"
+  brightCyan: "#b1c6ca"
+  brightWhite: "#f9f9f4"
+EOF
+
 clear
 
 # ----------------------------------
@@ -592,4 +648,4 @@ sudo apt-get autoremove
 clear 
 
 echo "${YELLOW}All setup, enjoy! 😉${NOCOLOR}"
-echo "${LIGHTGRAY}You're welcome to contribute to the project on https://github.com/LeuAlmeida/ubuntu-workstation${NOCOLOR}"
+echo "${ORANGE}You're welcome to contribute to the project on https://github.com/LeuAlmeida/ubuntu-workstation${NOCOLOR}"
