@@ -4,11 +4,11 @@ echo "Welcome! Let's start setting up your system. It could take more than 10 mi
 
 sudo apt-get update
 
-echo '[1/33] Installing curl 🔌' 
+echo '[1/34] Installing curl 🔌' 
 sudo apt install curl -y
 
 
-echo '[2/33] Installing git 😻' 
+echo '[2/34] Installing git 😻' 
 sudo apt install git -y
 
 echo "What name do you want to use in GIT user.name?"
@@ -31,19 +31,19 @@ cat ~/.ssh/id_rsa.pub | xclip -selection clipboard
 echo 'Enabling workspaces for both screens' 
 gsettings set org.gnome.mutter workspaces-only-on-primary false
 
-echo '[3/33] Installing zsh ⚡'
+echo '[3/34] Installing zsh ⚡'
 sudo apt-get install zsh -y
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 chsh -s /bin/zsh
 
-echo '[4/33] Installing tool to handle clipboard via CLI'
+echo '[4/34] Installing tool to handle clipboard via CLI'
 sudo apt-get install xclip -y
 
 export alias pbcopy='xclip -selection clipboard'
 export alias pbpaste='xclip -selection clipboard -o'
 source ~/.zshrc
 
-echo '[5/33] Installing VsCode 💼'
+echo '[5/34] Installing VsCode 💼'
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
@@ -179,14 +179,14 @@ code --install-extension rocketseat.theme-omni
 code --install-extension silvenon.mdx
 code --install-extension yzhang.markdown-all-in-one
 
-echo '[6/33] Installing spotify 🎵' 
+echo '[6/34] Installing spotify 🎵' 
 snap install spotify
 
-echo '[7/33] Installing Google Chrome 🖥' 
+echo '[7/34] Installing Google Chrome 🖥' 
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 
-echo '[8/33] Installing NVM ⏩' 
+echo '[8/34] Installing NVM ⏩' 
 sh -c "$(curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash)"
 
 export NVM_DIR="$HOME/.nvm" && (
@@ -206,29 +206,29 @@ echo '\nexport NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nv
 
 source ~/.zshrc
 
-echo "[9/33] Installing Node.js 😎"
+echo "[9/34] Installing Node.js 😎"
 nvm --version
 nvm install 12.18.2
 nvm alias default 12.18.2
 node --version
 npm --version
 
-echo '[10/33] Installing Typescript ⚡'
+echo '[10/34] Installing Typescript ⚡'
 npm install -g typescript
 
-echo '[11/33] Installing Create React App ⚡'
+echo '[11/34] Installing Create React App ⚡'
 npm install -g create-react-app
 
-echo '[12/33] Installing Gatsby ⚡'
+echo '[12/34] Installing Gatsby ⚡'
 npm install -g gatsby-cli
 
-echo '[13/33] Installing Yarn ⚡'
+echo '[13/34] Installing Yarn ⚡'
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt install yarn
 clear
 
-echo '[14/33] Installing React Native CLI 📲'
+echo '[14/34] Installing React Native CLI 📲'
 sudo npm install -g react-native-cli
 
 echo 'Installing JDK (Java Dvelopment Kit)'
@@ -241,12 +241,12 @@ echo 'Now you will need to install Android Studio manually on https://developer.
 echo 'Setting graphic libs'
 sudo apt-get install gcc-multilib lib32z1 lib32stdc++6
 
-echo '[15/33] Installing Autosuggestions ⌨' 
+echo '[15/34] Installing Autosuggestions ⌨' 
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 source ~/.zshrc
 
-echo '[16/33] Installing theme'
+echo '[16/34] Installing theme'
 sudo apt install fonts-firacode -y
 git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
 ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
@@ -291,12 +291,12 @@ zinit light zsh-users/zsh-completions
 EOF
 source ~/.zshrc
 
-echo '[17/33] Installing Franz 💬' 
+echo '[17/34] Installing Franz 💬' 
 wget https://github.com/meetfranz/franz/releases/download/v5.1.0/franz_5.1.0_amd64.deb -O franz.deb
 sudo dpkg -i franz.debchristian-kohler.path-intellisense
 sudo apt-get install -y -f 
 
-echo '[18/33] Installing Hyper'
+echo '[18/34] Installing Hyper'
 sudo apt-get install gdebi
 wget https://hyper-updates.now.sh/download/linux_deb
 sudo gdebi linux_deb
@@ -366,7 +366,7 @@ module.exports = {
 };
 EOF
 
-echo '[19/33] Installing Docker 🐳' 
+echo '[19/34] Installing Docker 🐳' 
 sudo apt-get remove docker docker-engine docker.io
 sudo apt install docker.io -y
 sudo systemctl start docker
@@ -376,41 +376,41 @@ docker --version
 chmod 777 /var/run/docker.sock
 docker run hello-world
 
-echo '[20/33] Installing docker-compose 🍱' 
+echo '[20/34] Installing docker-compose 🍱' 
 sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
-echo '[21/33] Installing kubectl ⏹'
+echo '[21/34] Installing kubectl ⏹'
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 
-echo '[22/33] Installing heroku-cli 💜'
+echo '[22/34] Installing heroku-cli 💜'
 curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
 heroku --version
 
-echo '[23/33] Installing aws-cli 💛' 
+echo '[23/34] Installing aws-cli 💛' 
 sudo apt-get install awscli -y
 aws --version
 curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
 sudo dpkg -i session-manager-plugin.deb
 session-manager-plugin --version
 
-echo '[24/33] Installing fzf 🔎'
+echo '[24/34] Installing fzf 🔎'
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
 source ~/.zshrc
 
-echo '[25/33] Installing dbeaver ⌛'
+echo '[25/34] Installing dbeaver ⌛'
 wget -c https://dbeaver.io/files/6.0.0/dbeaver-ce_6.0.0_amd64.deb
 sudo dpkg -i dbeaver-ce_6.0.0_amd64.deb
 sudo apt-get install -f
 clear
 
-echo '[26/33] Installing Robo3t 💚'
+echo '[26/34] Installing Robo3t 💚'
 snap install robo3t-snap
 clear
 
-echo '[27/33] Installing Insomnia 🎱' 
+echo '[27/34] Installing Insomnia 🎱' 
 echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" \
     | sudo tee -a /etc/apt/sources.list.d/insomnia.list
 wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc \
@@ -418,34 +418,38 @@ wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc \
 sudo apt-get install insomnia
 clear
 
-echo '[28/33] Installing Postbird 🐘'
+echo '[28/34] Installing Postbird 🐘'
 sudo snap install postbird -y
 clear
 
-echo '[29/33] Installing VLC ⏯'
+echo '[29/34] Installing VLC ⏯'
 sudo apt install vlc -y
 sudo apt install vlc-plugin-access-extra libbluray-bdj libdvdcss2 -y
 
-echo '[30/33] Installing Transmission 📩'
+echo '[30/34] Installing Transmission 📩'
 sudo add-apt-repository ppa:transmissionbt/ppa
 sudo apt-get update
 sudo apt-get install transmission transmission-qt -y
 clear
 
-echo '[31/33] Installing GIMP 🖼'
+echo '[31/34] Installing GIMP 🖼'
 yes | sudo add-apt-repository ppa:otto-kesselgulasch/gimp
 sudo apt-get update
 sudo apt-get install gimp gimp-gmic gmic -y
 sudo apt-get install gimp-plugin-registry -y
 clear
 
-echo '[32/33] Installing Reactotron ⚛'
+echo '[32/34] Installing Reactotron ⚛'
 wget -c https://github.com/infinitered/reactotron/releases/download/v2.17.1/reactotron-app_2.17.1_amd64.deb
 sudo dpkg -i reactotron-app_2.17.1_amd64.deb
 clear
 
-echo '[33/33] Installing Discord 💬'
+echo '[33/34] Installing Discord 💬'
 sudo snap install discord --classic
+clear
+
+echo '[34/34] Installing Terminalizer 💅'
+npm install -g terminalizer
 clear
 
 echo 'Commiting changes 🎈'

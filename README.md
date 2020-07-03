@@ -67,6 +67,7 @@ sh startup.sh
 - [Gimp](https://www.gimp.org/) - Open source image editor
 - [Reactotron](https://discord.com/) - Inspecting tool for ReactJS and React Native apps
 - [Discord](https://github.com/infinitered/reactotron) - Free channel chat
+- [Terminalizer](https://github.com/faressoft/terminalizer) - Record your terminal and generate animated gif images
 
 ## Authors
 
