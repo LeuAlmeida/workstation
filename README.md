@@ -78,6 +78,10 @@ sh startup.sh
 
 - **Léu Almeida** - Additions and modifications - [Léu Almeida](https://github.com/LeuAlmeida)
 
+## ToDo
+
+- [ ] Implement Debian option
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
