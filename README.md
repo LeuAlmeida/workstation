@@ -86,6 +86,9 @@ sh startup.sh
 <!--
 Stackoverflow answer about how to identify the OS
 https://stackoverflow.com/questions/394230/how-to-detect-the-os-from-a-bash-script
+
+Yes/No answers
+https://stackoverflow.com/questions/226703/how-do-i-prompt-for-yes-no-cancel-input-in-a-linux-shell-script
 -->
 
 ## License
