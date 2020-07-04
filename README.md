@@ -78,6 +78,16 @@ sh startup.sh
 
 - **Léu Almeida** - Additions and modifications - [Léu Almeida](https://github.com/LeuAlmeida)
 
+## ToDo
+
+- [ ] Implement Debian option
+- [ ] Implement a MacOS alternative
+
+<!--
+Stackoverflow answer about how to identify the OS
+https://stackoverflow.com/questions/394230/how-to-detect-the-os-from-a-bash-script
+-->
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
