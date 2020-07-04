@@ -12,9 +12,10 @@ if [ -z "$VERSION" ]; then
 fi
 
 echo $OS
-echo $ARCH
-echo $VERSION
+# echo $ARCH
+# echo $VERSION
 
+# Case the OS Distribution is Ubuntu, will run the ubuntu.sh file
 case $OS in (*ubuntu*)
-  echo 'É ubuntu =)'
+  sh scripts/ubuntu.sh
 esac
