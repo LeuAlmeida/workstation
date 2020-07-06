@@ -44,7 +44,7 @@ echo "${ORANGE}What name do you want to use in GIT user.name?"
 echo "For example, mine will be '${ORANGE}Léu Almeida'${NOCOLOR}"
 read git_config_user_name
 git config --global user.name "$git_config_user_name"
-clear 
+clear
 
 echo "${ORANGE}What email do you want to use in GIT user.email?"
 echo "For example, mine will be '${ORANGE}leo@webid.net.br'${NOCOLOR}"
@@ -57,7 +57,7 @@ ssh-keygen -t rsa -b 4096 -C $git_config_user_email
 ssh-add ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub | xclip -selection clipboard
 
-echo "${LIGHTGREEN}Enabling workspaces for both screens${NOCOLOR}" 
+echo "${LIGHTGREEN}Enabling workspaces for both screens${NOCOLOR}"
 gsettings set org.gnome.mutter workspaces-only-on-primary false
 
 # ----------------------------------
@@ -106,9 +106,9 @@ echo "${LIGHTGREEN}[8/33] Installing NVM ⏩'${NOCOLOR}"
 sh -c "$(curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash)"
 
 export NVM_DIR="$HOME/.nvm" && (
-git clone https://github.com/creationix/nvm.git "$NVM_DIR"
-cd "$NVM_DIR"
-git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
+    git clone https://github.com/creationix/nvm.git "$NVM_DIR"
+    cd "$NVM_DIR"
+    git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
 ) && \. "$NVM_DIR/nvm.sh"
 
 echo '\nexport ANDROID_HOME=~/Android/Sdk\n'
@@ -181,7 +181,7 @@ sudo apt-get install gcc-multilib lib32z1 lib32stdc++6
 echo "${LIGHTGREEN}[15/33] Installing Franz 💬'${NOCOLOR}"
 wget https://github.com/meetfranz/franz/releases/download/v5.1.0/franz_5.1.0_amd64.deb -O franz.deb
 sudo dpkg -i franz.debchristian-kohler.path-intellisense
-sudo apt-get install -y -f 
+sudo apt-get install -y -f
 
 # ----------------------------------
 # Hyper installation
@@ -264,9 +264,9 @@ clear
 # ----------------------------------
 echo "${LIGHTGREEN}[25/33] Installing Insomnia 🎱'${NOCOLOR}"
 echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" \
-    | sudo tee -a /etc/apt/sources.list.d/insomnia.list
+| sudo tee -a /etc/apt/sources.list.d/insomnia.list
 wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc \
-    | sudo apt-key add -
+| sudo apt-key add -
 sudo apt-get install insomnia
 clear
 
@@ -324,7 +324,7 @@ clear
 echo "${LIGHTGREEN}[32/33] Installing Terminalizer 💅${NOCOLOR}"
 npm install -g terminalizer
 
-cat <<EOF > ~/.terminalizer 
+cat <<EOF > ~/.terminalizer
 command: null
 cwd: null
 env:
@@ -396,7 +396,7 @@ echo -n "${YELLOW}Do you want to install the style settings, as VSCode extension
 read answer
 
 if [ "$answer" != "${answer#[Yy]}" ] ;then
-    echo "${LIGHTGREEN}Adding VSCode settings${NOCOLOR}" 
+    echo "${LIGHTGREEN}Adding VSCode settings${NOCOLOR}"
 cat <<EOF >  ~/.config/Code/User/settings.json
 {
   "terminal.integrated.fontSize": 14,
@@ -493,43 +493,47 @@ cat <<EOF >  ~/.config/Code/User/settings.json
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "eslint.migration.2_x": "off",
+  "[shellscript]": {
+    "editor.defaultFormatter": "shakram02.bash-beautify"
+  },
 }
 EOF
-
-echo "${LIGHTGREEN}Installing VSCode Extensions${NOCOLOR}"
-code --install-extension alexcvzz.vscode-sqlite
-code --install-extension basarat.god
-code --install-extension bmewburn.vscode-intelephense-client
-code --install-extension CoenraadS.bracket-pair-colorizer-2
-code --install-extension dbaeumer.vscode-eslint
-code --install-extension dracula-theme.theme-dracula
-code --install-extension eamodio.gitlens
-code --install-extension EditorConfig.EditorConfig
-code --install-extension esbenp.prettier-vscode
-code --install-extension jpoissonnier.vscode-styled-components
-code --install-extension mikestead.dotenv
-code --install-extension mrorz.language-gettext
-code --install-extension ms-azuretools.vscode-docker
-code --install-extension ms-vsliveshare.vsliveshare
-code --install-extension ms-vsliveshare.vsliveshare-audio
-code --install-extension ms-vsliveshare.vsliveshare-pack
-code --install-extension naumovs.color-highlight
-code --install-extension Perkovec.emoji
-code --install-extension PKief.material-icon-theme
-code --install-extension ritwickdey.LiveServer
-code --install-extension rocketseat.rocketseatreactjs
-code --install-extension rocketseat.rocketseatreactnative
-code --install-extension rocketseat.theme-omni
-code --install-extension silvenon.mdx
-code --install-extension yzhang.markdown-all-in-one
-
-echo "${LIGHTGREEN}Installing Omni theme${NOCOLOR}"
-git clone https://github.com/getomni/hyper-omni ~/.hyper_plugins/local/hyper-omni
-
-echo "${LIGHTGREEN}Installing Font Ligatures${NOCOLOR}"
-hyper i hyper-font-ligatures
-
-echo "${LIGHTGREEN}Implementing Hyper settings${NOCOLOR}"
+    
+    echo "${LIGHTGREEN}Installing VSCode Extensions${NOCOLOR}"
+    code --install-extension alexcvzz.vscode-sqlite
+    code --install-extension basarat.god
+    code --install-extension bmewburn.vscode-intelephense-client
+    code --install-extension CoenraadS.bracket-pair-colorizer-2
+    code --install-extension dbaeumer.vscode-eslint
+    code --install-extension dracula-theme.theme-dracula
+    code --install-extension eamodio.gitlens
+    code --install-extension EditorConfig.EditorConfig
+    code --install-extension esbenp.prettier-vscode
+    code --install-extension jpoissonnier.vscode-styled-components
+    code --install-extension mikestead.dotenv
+    code --install-extension mrorz.language-gettext
+    code --install-extension ms-azuretools.vscode-docker
+    code --install-extencsion ms-vsliveshare.vsliveshare
+    code --install-extension ms-vsliveshare.vsliveshare-audio
+    code --install-extension ms-vsliveshare.vsliveshare-pack
+    code --install-extension naumovs.color-highlight
+    code --install-extension Perkovec.emoji
+    code --install-extension PKief.material-icon-theme
+    code --install-extension ritwickdey.LiveServer
+    code --install-extension rocketseat.rocketseatreactjs
+    code --install-extension rocketseat.rocketseatreactnative
+    code --install-extension rocketseat.theme-omni
+    code --install-extension silvenon.mdx
+    code --install-extension yzhang.markdown-all-in-one
+    code --install-extension shakram02.bash-beautify
+    
+    echo "${LIGHTGREEN}Installing Omni theme${NOCOLOR}"
+    git clone https://github.com/getomni/hyper-omni ~/.hyper_plugins/local/hyper-omni
+    
+    echo "${LIGHTGREEN}Installing Font Ligatures${NOCOLOR}"
+    hyper i hyper-font-ligatures
+    
+    echo "${LIGHTGREEN}Implementing Hyper settings${NOCOLOR}"
 cat <<EOF > ~/.hyper.js
 module.exports = {
   config: {
@@ -587,26 +591,26 @@ module.exports = {
   },
 };
 EOF
-
-
-# ----------------------------------
-# Autosuggestions installation
-# ----------------------------------
-echo "${LIGHTGREEN}Installing Autosuggestions ⌨${NOCOLOR}"
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
-source ~/.zshrc
-
-# ----------------------------------
-# ZSH Themes installation
-# ----------------------------------
-echo "${LIGHTGREEN}Installing ZSH theme settings${NOCOLOR}"
-sudo apt install fonts-firacode -y
-git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
-ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-sed -i 's/.*ZSH_THEME=.*/ZSH_THEME="spaceship"/g' ~/.zshrc
-
-echo "${LIGHTGREEN}Setting Spaceship configs${NOCOLOR}"
+    
+    
+    # ----------------------------------
+    # Autosuggestions installation
+    # ----------------------------------
+    echo "${LIGHTGREEN}Installing Autosuggestions ⌨${NOCOLOR}"
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+    echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
+    source ~/.zshrc
+    
+    # ----------------------------------
+    # ZSH Themes installation
+    # ----------------------------------
+    echo "${LIGHTGREEN}Installing ZSH theme settings${NOCOLOR}"
+    sudo apt install fonts-firacode -y
+    git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
+    ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+    sed -i 's/.*ZSH_THEME=.*/ZSH_THEME="spaceship"/g' ~/.zshrc
+    
+    echo "${LIGHTGREEN}Setting Spaceship configs${NOCOLOR}"
 cat <<EOF >> ~/.zshrc
 SPACESHIP_PROMPT_ORDER=(
   user          # Username section
@@ -635,16 +639,16 @@ zplugin light zdharma/fast-syntax-highlighting
 zplugin light zsh-users/zsh-autosuggestions
 zplugin light zsh-users/zsh-completions
 EOF
-
-echo "${LIGHTGREEN}Installing ZSH Plugins${NOCOLOR}"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+    
+    echo "${LIGHTGREEN}Installing ZSH Plugins${NOCOLOR}"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 cat <<EOF >> ~/.zshrc
 zinit light zdharma/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 EOF
-source ~/.zshrc
-
+    source ~/.zshrc
+    
 fi
 
 # ----------------------------------
@@ -652,11 +656,11 @@ fi
 # ----------------------------------
 echo "${LIGHTGREEN}Commiting changes 🎈${NOCOLOR}"
 source ~/.zshrc
-sudo dpkg --configure -a 
+sudo dpkg --configure -a
 sudo apt-get update --fix-missing
 sudo apt-get autoremove
 
-clear 
+clear
 
 echo "                        .-´´´-.               "
 echo "                       / .===. \              "
