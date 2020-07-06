@@ -86,133 +86,6 @@ sudo apt-get install apt-transport-https -y
 sudo apt-get update
 sudo apt-get install code -y # or code-insiders
 
-echo "${LIGHTGREEN}Adding VSCode settings${NOCOLOR}" 
-cat <<EOF >  ~/.config/Code/User/settings.json
-{
-  "terminal.integrated.fontSize": 14,
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.startupEditor": "newUntitledFile",
-  "editor.fontSize": 14,
-  "editor.fontFamily": "Fira Code",
-  "editor.fontLigatures": true,
-  "explorer.compactFolders": false,
-  "editor.renderLineHighlight": "gutter",
-  "workbench.editor.labelFormat": "short",
-  "extensions.ignoreRecommendations": true,
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "typescript.updateImportsOnFileMove.enabled": "never",
-  "breadcrumbs.enabled": true,
-  "editor.parameterHints.enabled": false,
-  "explorer.confirmDragAndDrop": false,
-  "explorer.confirmDelete": false,
-  "editor.rulers": [
-    80,
-    120
-  ],
-  "[javascript]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    },
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-  "[javascriptreact]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    },
-  },
-  "[typescript]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    },
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-  "[typescriptreact]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    },
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-  "files.associations": {
-    ".sequelizerc": "javascript",
-    ".stylelintrc": "json",
-    ".prettierrc": "json"
-  },
-  "window.zoomLevel": 0,
-  "emmet.syntaxProfiles": {
-    "javascript": "jsx"
-  },
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact"
-  },
-  "gitlens.codeLens.recentChange.enabled": false,
-  "gitlens.codeLens.authors.enabled": false,
-  "gitlens.codeLens.enabled": false,
-  "git.enableSmartCommit": true,
-  "terminal.integrated.shell.osx": "/bin/zsh",
-  "liveshare.featureSet": "insiders",
-  "typescript.tsserver.log": "verbose",
-  "javascript.suggest.autoImports": true,
-  "typescript.suggest.autoImports": true,
-  "liveServer.settings.donotShowInfoMsg": true,
-  "material-icon-theme.activeIconPack": "nest",
-  "screencastMode.onlyKeyboardShortcuts": true,
-  "material-icon-theme.folders.associations": {
-    "infra": "app",
-    "entities": "class",
-    "schemas": "class",
-    "typeorm": "database",
-    "repositories": "mappings",
-    "http": "container",
-    "migrations": "tools",
-    "modules": "components",
-    "implementations": "core",
-    "dtos": "typescript",
-    "fakes": "mock",
-    "websockets": "pipe",
-    "protos": "pipe",
-    "grpc": "pipe",
-  },
-  "material-icon-theme.files.associations": {
-    "ormconfig.json": "database",
-    "tsconfig.json": "tune",
-    "*.proto": "3d",
-    "routes.ts": "routing"
-  },
-  "workbench.colorTheme": "Omni",
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "eslint.migration.2_x": "off",
-}
-EOF
-
-echo "${LIGHTGREEN}Installing VSCode Extensions${NOCOLOR}"
-code --install-extension alexcvzz.vscode-sqlite
-code --install-extension basarat.god
-code --install-extension bmewburn.vscode-intelephense-client
-code --install-extension CoenraadS.bracket-pair-colorizer-2
-code --install-extension dbaeumer.vscode-eslint
-code --install-extension dracula-theme.theme-dracula
-code --install-extension eamodio.gitlens
-code --install-extension EditorConfig.EditorConfig
-code --install-extension esbenp.prettier-vscode
-code --install-extension jpoissonnier.vscode-styled-components
-code --install-extension mikestead.dotenv
-code --install-extension mrorz.language-gettext
-code --install-extension ms-azuretools.vscode-docker
-code --install-extension ms-vsliveshare.vsliveshare
-code --install-extension ms-vsliveshare.vsliveshare-audio
-code --install-extension ms-vsliveshare.vsliveshare-pack
-code --install-extension naumovs.color-highlight
-code --install-extension Perkovec.emoji
-code --install-extension PKief.material-icon-theme
-code --install-extension ritwickdey.LiveServer
-code --install-extension rocketseat.rocketseatreactjs
-code --install-extension rocketseat.rocketseatreactnative
-code --install-extension rocketseat.theme-omni
-code --install-extension silvenon.mdx
-code --install-extension yzhang.markdown-all-in-one
-
 # ----------------------------------
 # Spotify installation
 # ----------------------------------
@@ -635,6 +508,142 @@ clear
 echo "${LIGHTGREEN}[35/35] Installing Expo 📱${NOCOLOR}"
 npm install -g terminalizer
 clear
+
+# ----------------------------------
+# Optional VSCode settings
+# ----------------------------------
+
+echo -n "${YELLOW}Do you want to install the VSCode settings, including extensions and JSON settings? (y/n)?${NOCOLOR}"
+read answer
+
+if [ "$answer" != "${answer#[Yy]}" ] ;then
+    echo "${LIGHTGREEN}Adding VSCode settings${NOCOLOR}" 
+cat <<EOF >  ~/.config/Code/User/settings.json
+{
+  "terminal.integrated.fontSize": 14,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.fontSize": 14,
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "explorer.compactFolders": false,
+  "editor.renderLineHighlight": "gutter",
+  "workbench.editor.labelFormat": "short",
+  "extensions.ignoreRecommendations": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  "breadcrumbs.enabled": true,
+  "editor.parameterHints.enabled": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "editor.rulers": [
+    80,
+    120
+  ],
+  "[javascript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[javascriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+  },
+  "[typescript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[typescriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "files.associations": {
+    ".sequelizerc": "javascript",
+    ".stylelintrc": "json",
+    ".prettierrc": "json"
+  },
+  "window.zoomLevel": 0,
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx"
+  },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "gitlens.codeLens.recentChange.enabled": false,
+  "gitlens.codeLens.authors.enabled": false,
+  "gitlens.codeLens.enabled": false,
+  "git.enableSmartCommit": true,
+  "terminal.integrated.shell.osx": "/bin/zsh",
+  "liveshare.featureSet": "insiders",
+  "typescript.tsserver.log": "verbose",
+  "javascript.suggest.autoImports": true,
+  "typescript.suggest.autoImports": true,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "material-icon-theme.activeIconPack": "nest",
+  "screencastMode.onlyKeyboardShortcuts": true,
+  "material-icon-theme.folders.associations": {
+    "infra": "app",
+    "entities": "class",
+    "schemas": "class",
+    "typeorm": "database",
+    "repositories": "mappings",
+    "http": "container",
+    "migrations": "tools",
+    "modules": "components",
+    "implementations": "core",
+    "dtos": "typescript",
+    "fakes": "mock",
+    "websockets": "pipe",
+    "protos": "pipe",
+    "grpc": "pipe",
+  },
+  "material-icon-theme.files.associations": {
+    "ormconfig.json": "database",
+    "tsconfig.json": "tune",
+    "*.proto": "3d",
+    "routes.ts": "routing"
+  },
+  "workbench.colorTheme": "Omni",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "eslint.migration.2_x": "off",
+}
+EOF
+
+echo "${LIGHTGREEN}Installing VSCode Extensions${NOCOLOR}"
+code --install-extension alexcvzz.vscode-sqlite
+code --install-extension basarat.god
+code --install-extension bmewburn.vscode-intelephense-client
+code --install-extension CoenraadS.bracket-pair-colorizer-2
+code --install-extension dbaeumer.vscode-eslint
+code --install-extension dracula-theme.theme-dracula
+code --install-extension eamodio.gitlens
+code --install-extension EditorConfig.EditorConfig
+code --install-extension esbenp.prettier-vscode
+code --install-extension jpoissonnier.vscode-styled-components
+code --install-extension mikestead.dotenv
+code --install-extension mrorz.language-gettext
+code --install-extension ms-azuretools.vscode-docker
+code --install-extension ms-vsliveshare.vsliveshare
+code --install-extension ms-vsliveshare.vsliveshare-audio
+code --install-extension ms-vsliveshare.vsliveshare-pack
+code --install-extension naumovs.color-highlight
+code --install-extension Perkovec.emoji
+code --install-extension PKief.material-icon-theme
+code --install-extension ritwickdey.LiveServer
+code --install-extension rocketseat.rocketseatreactjs
+code --install-extension rocketseat.rocketseatreactnative
+code --install-extension rocketseat.theme-omni
+code --install-extension silvenon.mdx
+code --install-extension yzhang.markdown-all-in-one
+fi
 
 # ----------------------------------
 # Finishing installation
