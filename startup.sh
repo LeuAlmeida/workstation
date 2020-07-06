@@ -176,62 +176,6 @@ echo "${LIGHTGREEN}Setting graphic libs${NOCOLOR}"
 sudo apt-get install gcc-multilib lib32z1 lib32stdc++6
 
 # ----------------------------------
-# Autosuggestions installation
-# ----------------------------------
-echo "${LIGHTGREEN}[15/34] Installing Autosuggestions ⌨${NOCOLOR}"
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
-source ~/.zshrc
-
-# ----------------------------------
-# ZSH Themes installation
-# ----------------------------------
-echo "${LIGHTGREEN}[16/34] Installing theme${NOCOLOR}"
-sudo apt install fonts-firacode -y
-git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
-ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-sed -i 's/.*ZSH_THEME=.*/ZSH_THEME="spaceship"/g' ~/.zshrc
-
-echo "${LIGHTGREEN}Setting Spaceship configs${NOCOLOR}"
-cat <<EOF >> ~/.zshrc
-SPACESHIP_PROMPT_ORDER=(
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
-  hg            # Mercurial section (hg_branch  + hg_status)
-  exec_time     # Execution time
-  line_sep      # Line break
-  vi_mode       # Vi-mode indicator
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
-SPACESHIP_USER_SHOW=always
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_CHAR_SYMBOL="❯"
-SPACESHIP_CHAR_SUFFIX=" "
-### Added by Zplugin's installer
-source "$HOME/.zplugin/bin/zplugin.zsh"
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
-### End of Zplugin installer's chunk
-
-zplugin light zdharma/fast-syntax-highlighting
-zplugin light zsh-users/zsh-autosuggestions
-zplugin light zsh-users/zsh-completions
-EOF
-
-echo "${LIGHTGREEN}Installing ZSH Plugins${NOCOLOR}"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
-cat <<EOF >> ~/.zshrc
-zinit light zdharma/fast-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
-EOF
-source ~/.zshrc
-
-# ----------------------------------
 # Franz installation
 # ----------------------------------
 echo "${LIGHTGREEN}[17/34] Installing Franz 💬'${NOCOLOR}"
@@ -246,71 +190,6 @@ echo "${LIGHTGREEN}[18/34] Installing Hyper${NOCOLOR}"
 sudo apt-get install gdebi
 wget https://hyper-updates.now.sh/download/linux_deb
 sudo gdebi linux_deb
-
-echo "${LIGHTGREEN}Installing Omni theme${NOCOLOR}"
-git clone https://github.com/getomni/hyper-omni ~/.hyper_plugins/local/hyper-omni
-
-echo "${LIGHTGREEN}Installing Font Ligatures${NOCOLOR}"
-hyper i hyper-font-ligatures
-
-echo "${LIGHTGREEN}Implementing Hyper settings${NOCOLOR}"
-cat <<EOF > ~/.hyper.js
-module.exports = {
-  config: {
-    updateChannel: 'stable',
-    fontSize: 12,
-    fontFamily: 'Fira Code, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
-    fontWeight: 'normal',
-    fontWeightBold: 'bold',
-    lineHeight: 1,
-    letterSpacing: 0,
-    cursorColor: 'rgba(248,28,229,0.8)',
-    cursorAccentColor: '#000',
-    cursorShape: 'BLOCK',
-    cursorBlink: false,
-    foregroundColor: '#fff',
-    backgroundColor: '#000',
-    selectionColor: 'rgba(248,28,229,0.3)',
-    borderColor: '#333',
-    css: '',
-    termCSS: '',
-    showHamburgerMenu: '',
-    showWindowControls: '',
-    padding: '12px 14px',
-    colors: {
-      black: '#000000',
-      red: '#C51E14',
-      green: '#1DC121',
-      yellow: '#C7C329',
-      blue: '#0A2FC4',
-      magenta: '#C839C5',
-      cyan: '#20C5C6',
-      white: '#C7C7C7',
-      lightBlack: '#686868',
-      lightRed: '#FD6F6B',
-      lightGreen: '#67F86F',
-      lightYellow: '#FFFA72',
-      lightBlue: '#6A76FB',
-      lightMagenta: '#FD7CFC',
-      lightCyan: '#68FDFE',
-      lightWhite: '#FFFFFF',
-    },
-    shell: '',
-    shellArgs: ['--login'],
-    env: {},
-    bell: 'SOUND',
-    copyOnSelect: false,
-    defaultSSHApp: true,
-    quickEdit: false,
-    macOptionSelectionMode: 'vertical',
-    webGLRenderer: false,
-  },
-  plugins: ['hyper-font-ligatures'],
-  localPlugins: ['hyper-omni'],
-  keymaps: {
-  },
-};
-EOF
 
 # ----------------------------------
 # Docker installation
@@ -513,7 +392,7 @@ clear
 # Optional VSCode settings
 # ----------------------------------
 
-echo -n "${YELLOW}Do you want to install the VSCode settings, including extensions and JSON settings? (y/n)?${NOCOLOR}"
+echo -n "${YELLOW}Do you want to install the style settings, as VSCode extensions, ZSH plugins and Fira Code font? (y/n)?${NOCOLOR}"
 read answer
 
 if [ "$answer" != "${answer#[Yy]}" ] ;then
@@ -643,6 +522,129 @@ code --install-extension rocketseat.rocketseatreactnative
 code --install-extension rocketseat.theme-omni
 code --install-extension silvenon.mdx
 code --install-extension yzhang.markdown-all-in-one
+
+echo "${LIGHTGREEN}Installing Omni theme${NOCOLOR}"
+git clone https://github.com/getomni/hyper-omni ~/.hyper_plugins/local/hyper-omni
+
+echo "${LIGHTGREEN}Installing Font Ligatures${NOCOLOR}"
+hyper i hyper-font-ligatures
+
+echo "${LIGHTGREEN}Implementing Hyper settings${NOCOLOR}"
+cat <<EOF > ~/.hyper.js
+module.exports = {
+  config: {
+    updateChannel: 'stable',
+    fontSize: 12,
+    fontFamily: 'Fira Code, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+    fontWeight: 'normal',
+    fontWeightBold: 'bold',
+    lineHeight: 1,
+    letterSpacing: 0,
+    cursorColor: 'rgba(248,28,229,0.8)',
+    cursorAccentColor: '#000',
+    cursorShape: 'BLOCK',
+    cursorBlink: false,
+    foregroundColor: '#fff',
+    backgroundColor: '#000',
+    selectionColor: 'rgba(248,28,229,0.3)',
+    borderColor: '#333',
+    css: '',
+    termCSS: '',
+    showHamburgerMenu: '',
+    showWindowControls: '',
+    padding: '12px 14px',
+    colors: {
+      black: '#000000',
+      red: '#C51E14',
+      green: '#1DC121',
+      yellow: '#C7C329',
+      blue: '#0A2FC4',
+      magenta: '#C839C5',
+      cyan: '#20C5C6',
+      white: '#C7C7C7',
+      lightBlack: '#686868',
+      lightRed: '#FD6F6B',
+      lightGreen: '#67F86F',
+      lightYellow: '#FFFA72',
+      lightBlue: '#6A76FB',
+      lightMagenta: '#FD7CFC',
+      lightCyan: '#68FDFE',
+      lightWhite: '#FFFFFF',
+    },
+    shell: '',
+    shellArgs: ['--login'],
+    env: {},
+    bell: 'SOUND',
+    copyOnSelect: false,
+    defaultSSHApp: true,
+    quickEdit: false,
+    macOptionSelectionMode: 'vertical',
+    webGLRenderer: false,
+  },
+  plugins: ['hyper-font-ligatures'],
+  localPlugins: ['hyper-omni'],
+  keymaps: {
+  },
+};
+EOF
+
+
+# ----------------------------------
+# Autosuggestions installation
+# ----------------------------------
+echo "${LIGHTGREEN}Installing Autosuggestions ⌨${NOCOLOR}"
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
+source ~/.zshrc
+
+# ----------------------------------
+# ZSH Themes installation
+# ----------------------------------
+echo "${LIGHTGREEN}Installing ZSH theme settings${NOCOLOR}"
+sudo apt install fonts-firacode -y
+git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
+ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+sed -i 's/.*ZSH_THEME=.*/ZSH_THEME="spaceship"/g' ~/.zshrc
+
+echo "${LIGHTGREEN}Setting Spaceship configs${NOCOLOR}"
+cat <<EOF >> ~/.zshrc
+SPACESHIP_PROMPT_ORDER=(
+  user          # Username section
+  dir           # Current directory section
+  host          # Hostname section
+  git           # Git section (git_branch + git_status)
+  hg            # Mercurial section (hg_branch  + hg_status)
+  exec_time     # Execution time
+  line_sep      # Line break
+  vi_mode       # Vi-mode indicator
+  jobs          # Background jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
+)
+SPACESHIP_USER_SHOW=always
+SPACESHIP_PROMPT_ADD_NEWLINE=false
+SPACESHIP_CHAR_SYMBOL="❯"
+SPACESHIP_CHAR_SUFFIX=" "
+### Added by Zplugin's installer
+source "$HOME/.zplugin/bin/zplugin.zsh"
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+### End of Zplugin installer's chunk
+
+zplugin light zdharma/fast-syntax-highlighting
+zplugin light zsh-users/zsh-autosuggestions
+zplugin light zsh-users/zsh-completions
+EOF
+
+echo "${LIGHTGREEN}Installing ZSH Plugins${NOCOLOR}"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+cat <<EOF >> ~/.zshrc
+zinit light zdharma/fast-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+EOF
+source ~/.zshrc
+
 fi
 
 # ----------------------------------
