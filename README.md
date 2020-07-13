@@ -82,6 +82,7 @@ sh startup.sh
 
 - [ ] Implement Debian option
 - [ ] Include git shortcuts
+- [ ] Implement OpenOffice (https://www.edivaldobrito.com.br/apache-openoffice-no-linux/)
 
 ## License
 
