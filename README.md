@@ -81,6 +81,7 @@ sh startup.sh
 ## ToDo
 
 - [ ] Implement Debian option
+- [ ] Include git shortcuts
 
 ## License
 
