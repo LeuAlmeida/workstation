@@ -70,6 +70,7 @@ sh startup.sh
 - [Terminalizer](https://github.com/faressoft/terminalizer) - Record your terminal and generate animated gif images
 - [Expo](https://docs.expo.io/) - A framework and a platform for universal React applications. 
 - [Vercel](https://vercel.com/) - Optimal workflow for frontend teams.
+- [OpenOffice](http://www.openoffice.org/pt/) - Pacote de software de produtividade de escritório de código aberto.
 
 ## Authors
 
@@ -83,7 +84,6 @@ sh startup.sh
 
 - [ ] Implement Debian option
 - [ ] Include git shortcuts
-- [ ] Implement OpenOffice (https://www.edivaldobrito.com.br/apache-openoffice-no-linux/)
 
 ## License
 
