@@ -70,7 +70,7 @@ sh startup.sh
 - [Terminalizer](https://github.com/faressoft/terminalizer) - Record your terminal and generate animated gif images
 - [Expo](https://docs.expo.io/) - A framework and a platform for universal React applications. 
 - [Vercel](https://vercel.com/) - Optimal workflow for frontend teams.
-- [OpenOffice](http://www.openoffice.org/pt/) - Pacote de software de produtividade de escritório de código aberto.
+- [OpenOffice](http://www.openoffice.org/pt/) - Open source office productivity software package.
 
 ## Authors
 
