@@ -84,6 +84,7 @@ sh startup.sh
 
 - [ ] Implement Debian option
 - [ ] Include git shortcuts
+- [ ] Implement MacOS option
 
 ## License
 
