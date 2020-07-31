@@ -47,7 +47,7 @@ case $OS in (*ubuntu*)
     read answer
     
     if [ "$answer" != "${answer#[Yy]}" ] ;then
-        sh scripts/ubuntu.sh
+        sh scripts/linux/ubuntu.sh
     fi
 esac
 
@@ -56,6 +56,6 @@ case $OS in (*debian*)
     read answer
     
     if [ "$answer" != "${answer#[Yy]}" ] ;then
-        sh scripts/debian.sh
+        sh scripts/linux/debian.sh
     fi
 esac
