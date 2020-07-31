@@ -69,6 +69,8 @@ sh startup.sh
 - [Discord](https://github.com/infinitered/reactotron) - Free channel chat
 - [Terminalizer](https://github.com/faressoft/terminalizer) - Record your terminal and generate animated gif images
 - [Expo](https://docs.expo.io/) - A framework and a platform for universal React applications. 
+- [Vercel](https://vercel.com/) - Optimal workflow for frontend teams.
+- [OpenOffice](http://www.openoffice.org/pt/) - Open source office productivity software package.
 
 ## Authors
 
