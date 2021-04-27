@@ -1,11 +1,11 @@
-<p align="center">
+<!-- <p align="center">
   <img alt="Icon" width="200" src=".github/icon.png" />
-</p>
+</p> -->
 
-<h1 align="center">UBUNTU DEV WORKSTATION SETUP</h1>
+<h1 align="center">DEVELOPMENT WORKSTATION SETUP</h1>
 
 <blockquote align="center">
-This configs were made based on <a href="https://github.com/ErickWendel/ew-ubuntu-setup">Erick Wendel's setup</a> and my own needs as a JS Developer and other personal stuff.
+This configs were made based on <a href="https://github.com/ErickWendel/ew-ubuntu-setup">Erick Wendel's setup</a> and my own needs as a Web Developer and other personal stuff.
 </blockquote>
 
 <p align="center">
@@ -15,8 +15,8 @@ This configs were made based on <a href="https://github.com/ErickWendel/ew-ubunt
     <img alt="Made by Léu Almeida" src="https://img.shields.io/badge/made%20by-Léu%20Almeida-%23FF5722">
   </a>
   
-  <a href="https://github.com/LeuAlmeida/ubuntu-workstation/actions">
-    <img alt="Workflow" src="https://github.com/LeuAlmeida/ubuntu-workstation/workflows/CI/badge.svg">
+  <a href="https://github.com/LeuAlmeida/workstation/actions">
+    <img alt="Workflow" src="https://github.com/LeuAlmeida/workstation/workflows/CI/badge.svg">
   </a>  
 </p>
 
@@ -34,43 +34,54 @@ sh startup.sh
 
 ## You'll be installing...
 
-- [Curl](https://curl.haxx.se/) - Command line tool and library for transferring data with URLs
-- [Git](https://git-scm.com/) - Free and open source distributed version control system
-- [Oh-My-Zsh](https://ohmyz.sh/) - Framework for managing your ZSH configuration
-- [Xclip](https://opensource.com/article/19/7/xclip) - Command line interface to the X11 clipboard
-- [VsCode](https://code.visualstudio.com/) - Source-code editor made by Microsoft
-- [Spotify](https://www.spotify.com/) - Music streaming and media services provider
-- [Google Chrome](https://www.google.pt/intl/pt-PT/chrome/) - Google Browser
-- [NVM](https://github.com/nvm-sh/nvm) - Version manager for NodeJS
-- [Node.js](https://nodejs.org/en/) - JavaScript runtime built on Chrome's V8 JavaScript engine
-- [Typescript](https://www.typescriptlang.org/) - Typed superset of JavaScript that compiles to plain JavaScript.
-- [Create React App](https://github.com/facebook/create-react-app) - Set up a modern ReactJS web app by running one command
-- [GatsbyJS](https://www.gatsbyjs.org/) - ReactJS framework
-- [Yarn](https://classic.yarnpkg.com/lang/en/) - Dependency management
-- [React Native CLI](https://reactnative.dev/) - Framework to develop native apps
-- [Autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) - It suggests commands as you type based on history and completions
-- [Fira Code](https://github.com/tonsky/FiraCode) - Monospaced font with programming ligatures
-- [Franz](https://meetfranz.com/) - Group messaging services into one application
-- [Hyper](https://terminator-gtk3.readthedocs.io/en/latest/) - Terminal emulator like xterm, gnome-terminal, konsole, etc
-- [Docker](https://www.docker.com/) - Platform for building, deploying, and managing containerized applications
-- [Docker Compose](https://docs.docker.com/compose/) - Tool for defining and running multi-container Docker applications
-- [Kubernetes CLI](https://kubernetes.io/docs/reference/kubectl/overview/) - CLI to control Kubernetes clusters
-- [AWS CLI](https://aws.amazon.com/pt/cli/) - CLI to control AWS services
-- [Heroku CLI](https://devcenter.heroku.com/categories/command-line) - Create and manage your Heroku apps
-- [Fzf](https://github.com/junegunn/fzf) - General-purpose command-line fuzzy finder
-- [DBeaver](https://dbeaver.io/) - Universal DB tool
-- [Robo3t](https://robomongo.org/) - MongoDB GUI
-- [Insomnia](https://insomnia.rest/) - API Client
-- [Postbird](https://www.electronjs.org/apps/postbird) - PostgreSQL GUI
-- [VLC](https://www.videolan.org/vlc/) - Media player
-- [Transmission](https://transmissionbt.com/) - Torrent client
-- [Gimp](https://www.gimp.org/) - Open source image editor
-- [Reactotron](https://discord.com/) - Inspecting tool for ReactJS and React Native apps
-- [Discord](https://github.com/infinitered/reactotron) - Free channel chat
-- [Terminalizer](https://github.com/faressoft/terminalizer) - Record your terminal and generate animated gif images
-- [Expo](https://docs.expo.io/) - A framework and a platform for universal React applications. 
-- [Vercel](https://vercel.com/) - Optimal workflow for frontend teams.
-- [OpenOffice](http://www.openoffice.org/pt/) - Open source office productivity software package.
+### Subtitles
+✅ - Available
+⚠️ - Unavailable
+❌ - Doesn't has support
+
+| App                    | Description                                                               | Linux | Debian | MacOS |
+|------------------------|---------------------------------------------------------------------------|-------|--------|-------|
+| Curl                   | Command line tool and library for transferring data with URLs             |   ✅   |   ⚠️   |   ✅  |
+| Homebrew               | Package management system                                                 |   ❌   |   ❌   |   ✅  |
+| XCode CL Tools         | Gives Mac terminal users many commonly used tools                         |   ❌   |   ❌   |   ✅  |
+| Git                    | Free and open source distributed version control system                   |   ✅   |   ⚠️   |   ✅  |
+| ZSH                    | UNIX command interpreter                                                  |   ✅   |   ⚠️   |   ✅  |
+| Oh-My-Zsh              | Framework for managing your ZSH configuration                             |   ✅   |   ⚠️   |   ✅  |
+| Xclip                  | Command line interface to the X11 clipboard                               |   ✅   |   ⚠️   |   ⚠️  |
+| VsCode                 | Source-code editor made by Microsoft                                      |   ✅   |   ⚠️   |   ✅  |
+| Spotify                | Music streaming and media services provider                               |   ✅   |   ⚠️   |   ✅  |
+| Google Chrome          | Google Browser                                                            |   ✅   |   ⚠️   |   ✅  |
+| NVM                    | Version manager for NodeJS                                                |   ✅   |   ⚠️   |   ✅  |
+| NodeJS                 | JavaScript runtime built on Chrome's V8 JavaScript engine                 |   ✅   |   ⚠️   |   ✅  |
+| Typescript             | Typed superset of JavaScript that compiles to plain JavaScript.           |   ✅   |   ⚠️   |   ✅  |
+| CRA (Create React App) | Modern ReactJS web apps by running one command                            |   ✅   |   ⚠️   |   ✅  |
+| GatsbyJS               | ReactJS framework                                                         |   ✅   |   ⚠️   |   ✅  |
+| Yarn                   | Dependency management                                                     |   ✅   |   ⚠️   |   ✅  |
+| React Native CLI       | Framework to develop native apps                                          |   ✅   |   ⚠️   |   ✅  |
+| AWS CLI                | CLI to control AWS services                                               |   ✅   |   ⚠️   |   ✅  |
+| AWS EB                 | Service for deploying applications which orchestrates AWS services        |   ⚠️   |   ⚠️   |   ✅  |
+| Zsh Autosuggestions    | It suggests commands as you type based on history and completions         |   ✅   |   ⚠️   |   ✅  |
+| Fira Code Font         | Monospaced font with programming ligatures                                |   ✅   |   ⚠️   |   ✅  |
+| Franz                  | Group messaging services into one application                             |   ✅   |   ⚠️   |   ⚠️  |
+| Hyper                  | Terminal emulator like xterm, gnome-terminal, konsole, etc                |   ✅   |   ⚠️   |   ✅  |
+| Docker                 | Platform for building, deploying, and managing containerized applications |   ✅   |   ⚠️   |   ✅  |
+| Docker Compose         | Tool for defining and running multi-container Docker applications         |   ✅   |   ⚠️   |   ✅  |
+| Heroku CLI             | Create and manage your Heroku apps                                        |   ✅   |   ⚠️   |   ✅  |
+| Fzf                    | General-purpose command-line fuzzy finder                                 |   ✅   |   ⚠️   |   ⚠️  |
+| DBeaver                | Universal DB tool                                                         |   ✅   |   ⚠️   |   ✅  |
+| Robo3t                 | MongoDB GUI                                                               |   ✅   |   ⚠️   |   ✅  |
+| Sequel Pro             | MySQL GUI                                                                 |   ⚠️   |   ⚠️   |   ✅  |
+| Insomnia               | API Client                                                                |   ✅   |   ⚠️   |   ✅  |
+| Postbird               | PostgreSQL GUI                                                            |   ✅   |   ⚠️   |   ✅  |
+| VLC                    | Media player                                                              |   ✅   |   ⚠️   |   ⚠️  |
+| Transmission           | Torrent client                                                            |   ✅   |   ⚠️   |   ⚠️  |
+| Gimp                   | Open source image editor                                                  |   ✅   |   ⚠️   |   ✅  |
+| Reactotron             | Inspecting tool for ReactJS and React Native apps                         |   ✅   |   ⚠️   |   ✅  |
+| Discord                | Free channel chat                                                         |   ✅   |   ⚠️   |   ✅  |
+| Terminalizer           | Record your terminal and generate animated gif images                     |   ✅   |   ⚠️   |   ⚠️  |
+| Expo                   | A framework and a platform for universal React applications.              |   ✅   |   ⚠️   |   ✅  |
+| Vercel                 | Optimal workflow for frontend teams.                                      |   ✅   |   ⚠️   |   ✅  |
+| OpenOffice             | Open source office productivity software package.                         |   ✅   |   ⚠️   |   ✅  |
 
 ## Authors
 
@@ -83,15 +94,6 @@ sh startup.sh
 ## ToDo
 
 - [ ] Implement Debian option
-- [ ] Implement a MacOS alternative
-
-<!--
-Stackoverflow answer about how to identify the OS
-https://stackoverflow.com/questions/394230/how-to-detect-the-os-from-a-bash-script
-
-Yes/No answers
-https://stackoverflow.com/questions/226703/how-do-i-prompt-for-yes-no-cancel-input-in-a-linux-shell-script
--->
 
 ## License
 

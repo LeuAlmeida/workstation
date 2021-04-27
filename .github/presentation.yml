@@ -80,7 +80,7 @@ records:
   - delay: 92
     content: ' '
   - delay: 289
-    content: 'https://github.com/LeuAlmeida/ubuntu-workstation'
+    content: 'https://github.com/LeuAlmeida/workstation'
   - delay: 340
     content: .
   - delay: 216
@@ -90,7 +90,7 @@ records:
   - delay: 74
     content: t
   - delay: 235
-    content: "\r\nCloning into 'ubuntu-workstation'...\r\n"
+    content: "\r\nCloning into 'workstation'...\r\n"
   - delay: 1004
     content: "remote: Enumerating objects: 54, done.\e[K\r\nremote: Counting objects:   1% (1/54)\e[K\rremote: Counting objects:   3% (2/54)\e[K\rremote: Counting objects:   5% (3/54)\e[K\r"
   - delay: 59
@@ -118,9 +118,9 @@ records:
   - delay: 127
     content: ntu-workstation/
   - delay: 380
-    content: "\r\n\e]0;leunardo@leunardo: ~/Desktop/personal/ubuntu-workstation\a\e[01;32mleunardo@leunardo\e[00m:\e[01;34m~/Desktop/personal/ubuntu-workstation\e[00m$ "
+    content: "\r\n\e]0;leunardo@leunardo: ~/Desktop/personal/workstation\a\e[01;32mleunardo@leunardo\e[00m:\e[01;34m~/Desktop/personal/workstation\e[00m$ "
   - delay: 888
-    content: "\e[H\e[2J\e]0;leunardo@leunardo: ~/Desktop/personal/ubuntu-workstation\a\e[01;32mleunardo@leunardo\e[00m:\e[01;34m~/Desktop/personal/ubuntu-workstation\e[00m$ "
+    content: "\e[H\e[2J\e]0;leunardo@leunardo: ~/Desktop/personal/workstation\a\e[01;32mleunardo@leunardo\e[00m:\e[01;34m~/Desktop/personal/workstation\e[00m$ "
   - delay: 1431
     content: "\a"
   - delay: 361
@@ -128,7 +128,7 @@ records:
   - delay: 77
     content: s
   - delay: 118
-    content: "\r\nLICENSE.md  README.md  startup.sh\r\n\e]0;leunardo@leunardo: ~/Desktop/personal/ubuntu-workstation\a\e[01;32mleunardo@leunardo\e[00m:\e[01;34m~/Desktop/personal/ubuntu-workstation\e[00m$ "
+    content: "\r\nLICENSE.md  README.md  startup.sh\r\n\e]0;leunardo@leunardo: ~/Desktop/personal/workstation\a\e[01;32mleunardo@leunardo\e[00m:\e[01;34m~/Desktop/personal/workstation\e[00m$ "
   - delay: 931
     content: s
   - delay: 178

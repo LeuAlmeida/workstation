@@ -7,19 +7,19 @@ clear
 echo "${BLUE}Welcome! Let's start setting up your system. "
 echo "It could take more than 10 minutes, be patient, please 💙 ${NOCOLOR}"
 
-sudo apt-get update
+# ----------------------------------
+# Homebrew Installation
+# ----------------------------------
+echo "${LIGHTGREEN}[1/32] Installing brew 🍺'${NOCOLOR}"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+clear
 
 # ----------------------------------
-# Curl installation
+# Xcode Installation
 # ----------------------------------
-echo "${LIGHTGREEN}[1/35] Installing curl 🔌'${NOCOLOR}"
-sudo apt install curl -y
-
-# ----------------------------------
-# Git installation
-# ----------------------------------
-echo "${LIGHTGREEN}[2/35] Installing git 😻'${NOCOLOR}"
-sudo apt install git -y
+echo "${LIGHTGREEN}[2/32] Installing Xcode Command Line Tools 🛠️'${NOCOLOR}"
+xcode-select --install
+clear
 
 echo "${ORANGE}What name do you want to use in GIT user.name?"
 echo "For example, mine will be '${ORANGE}Léu Almeida'${NOCOLOR}"
@@ -37,343 +37,222 @@ echo "${LIGHTGREN}Generating a SSH Key${NOCOLOR}"
 ssh-keygen -t rsa -b 4096 -C $git_config_user_email
 ssh-add ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub | xclip -selection clipboard
-
-echo "${LIGHTGREEN}Enabling workspaces for both screens${NOCOLOR}"
-gsettings set org.gnome.mutter workspaces-only-on-primary false
+clear
 
 # ----------------------------------
 # ZSH installation
 # ----------------------------------
-echo "${LIGHTGREEN}[3/35] Installing zsh ⚡${NOCOLOR}"
-sudo apt-get install zsh -y
+echo "${LIGHTGREEN}[3/32] Installing zsh ⚡${NOCOLOR}"
+brew install zsh
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 chsh -s /bin/zsh
-
-echo "${LIGHTGREEN}[4/35] Installing tool to handle clipboard via CLI${NOCOLOR}"
-sudo apt-get install xclip -y
-
-export alias pbcopy='xclip -selection clipboard'
-export alias pbpaste='xclip -selection clipboard -o'
-source ~/.zshrc
+clear
 
 # ----------------------------------
 # VsCode installation
 # ----------------------------------
-echo "${LIGHTGREEN}[5/35] Installing VsCode 💼${NOCOLOR}"
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-sudo apt-get install apt-transport-https -y
-sudo apt-get update
-sudo apt-get install code -y # or code-insiders
+echo "${LIGHTGREEN}[5/32] Installing VsCode 💼${NOCOLOR}"
+brew update
+brew tap caskroom/cask
+brew cask search visual-studio-code
+brew cask install visual-studio-code
+clear
 
 # ----------------------------------
 # Spotify installation
 # ----------------------------------
-echo "${LIGHTGREEN}[6/35] Installing spotify 🎵'${NOCOLOR}"
-sudo snap install spotify
+echo "${LIGHTGREEN}[6/32] Installing spotify 🎵'${NOCOLOR}"
+brew install --cask spotify
+clear
 
 # ----------------------------------
 # Google Chrome installation
 # ----------------------------------
-echo "${LIGHTGREEN}[7/35] Installing Google Chrome 🖥'${NOCOLOR}"
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
+echo "${LIGHTGREEN}[7/32] Installing Google Chrome 🖥'${NOCOLOR}"
+brew install --cask google-chrome
+clear
 
 # ----------------------------------
 # NVM installation
 # ----------------------------------
-echo "${LIGHTGREEN}[8/35] Installing NVM ⏩'${NOCOLOR}"
-sh -c "$(curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash)"
+echo "${LIGHTGREEN}[8/32] Installing NVM ⏩'${NOCOLOR}"
+cd ~/
+git clone https://github.com/nvm-sh/nvm.git .nvm
+cd ~/.nvm
+git checkout v0.38.0
+. ./nvm.sh
 
-export NVM_DIR="$HOME/.nvm" && (
-    git clone https://github.com/creationix/nvm.git "$NVM_DIR"
-    cd "$NVM_DIR"
-    git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
-) && \. "$NVM_DIR/nvm.sh"
-
-echo '\nexport ANDROID_HOME=~/Android/Sdk\n'
-echo '\nexport PATH=$PATH:$ANDROID_HOME/tools\n'
-echo '\nexport PATH=$PATH:$ANDROID_HOME/platform-tools\n'
-
-echo '\nexport PATH=/usr/local/share/npm/bin:$PATH\n'
-
-echo '\nexport NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"\n' >> .zshrc
+cat <<EOF >> ~/.zshrc
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+EOF
 
 source ~/.zshrc
+clera
 
 # ----------------------------------
 # Node.js installation
 # ----------------------------------
-echo "${LIGHTGREEN}[9/35] Installing Node.js 😎${NOCOLOR}"
-nvm --version
-nvm install 12.18.2
-nvm alias default 12.18.2
-node --version
-npm --version
+echo "${LIGHTGREEN}[9/32] Installing Node.js 😎${NOCOLOR}"
+nvm install node
+nvm alias default node
+clear
 
 # ----------------------------------
 # Typescript installation
 # ----------------------------------
-echo "${LIGHTGREEN}[10/35] Installing Typescript ⚡${NOCOLOR}"
+echo "${LIGHTGREEN}[10/32] Installing Typescript ⚡${NOCOLOR}"
 npm install -g typescript
+clear
 
 # ----------------------------------
 # ReactJS CRA installation
 # ----------------------------------
-echo "${LIGHTGREEN}[11/35] Installing Create React App ⚡${NOCOLOR}"
+echo "${LIGHTGREEN}[11/32] Installing Create React App ⚡${NOCOLOR}"
 npm install -g create-react-app
+clear
 
 # ----------------------------------
 # GatsbyJS installation
 # ----------------------------------
-echo "${LIGHTGREEN}[12/35] Installing GatsbyJS ⚡${NOCOLOR}"
+echo "${LIGHTGREEN}[12/32] Installing GatsbyJS ⚡${NOCOLOR}"
 npm install -g gatsby-cli
+clear
 
-echo "${LIGHTGREEN}[13/35] Installing Yarn ⚡${NOCOLOR}"
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt install yarn
+echo "${LIGHTGREEN}[13/32] Installing Yarn ⚡${NOCOLOR}"
+npm install --global yarn
 clear
 
 # ----------------------------------
 # React Native installation
 # ----------------------------------
-echo "${LIGHTGREEN}[14/35] Installing React Native CLI 📲${NOCOLOR}"
+echo "${LIGHTGREEN}[14/32] Installing React Native CLI 📲${NOCOLOR}"
 sudo npm install -g react-native-cli
-
-echo "${LIGHTGREEN}Installing JDK (Java Dvelopment Kit)${NOCOLOR}"
-sudo add-apt-repository ppa:openjdk-r/ppa
-sudo apt-get update
-sudo apt-get install openjdk-8-jdk
-sudo update-alternatives --config java
-
-echo ""
-
-echo "${LIGHTRED}Now you will need to install Android Studio manually on https://developer.android.com/studio${NOCOLOR}"
-
-echo "${LIGHTGREEN}Setting graphic libs${NOCOLOR}"
-sudo apt-get install gcc-multilib lib32z1 lib32stdc++6
-
-# ----------------------------------
-# Franz installation
-# ----------------------------------
-echo "${LIGHTGREEN}[15/35] Installing Franz 💬'${NOCOLOR}"
-wget https://github.com/meetfranz/franz/releases/download/v5.1.0/franz_5.1.0_amd64.deb -O franz.deb
-sudo dpkg -i franz.debchristian-kohler.path-intellisense
-sudo apt-get install -y -f
+clear
 
 # ----------------------------------
 # Hyper installation
 # ----------------------------------
-echo "${LIGHTGREEN}[16/35] Installing Hyper${NOCOLOR}"
-sudo apt-get install gdebi
-wget https://hyper-updates.now.sh/download/linux_deb
-sudo gdebi linux_deb
+echo "${LIGHTGREEN}[15/32] Installing Hyper${NOCOLOR}"
+brew install --cask hyper
+clear
 
 # ----------------------------------
 # Docker installation
 # ----------------------------------
-echo "${LIGHTGREEN}[17/35] Installing Docker 🐳'${NOCOLOR}"
-sudo apt-get remove docker docker-engine docker.io
-sudo apt install docker.io -y
-sudo systemctl start docker
-sudo systemctl enable docker
+echo "${LIGHTGREEN}[16/32] Installing Docker 🐳'${NOCOLOR}"
+brew install docker
 docker --version
 
 chmod 777 /var/run/docker.sock
 docker run hello-world
+clear
 
 # ----------------------------------
 # Docker Compose installation
 # ----------------------------------
-echo "${LIGHTGREEN}[18/35] Installing docker-compose 🍱'${NOCOLOR}"
+echo "${LIGHTGREEN}[17/32] Installing docker-compose 🍱'${NOCOLOR}"
 sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
+clear
 
 # ----------------------------------
 # Kubectl installation
 # ----------------------------------
-echo "${LIGHTGREEN}[19/35] Installing kubectl ⏹${NOCOLOR}"
-curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+echo "${LIGHTGREEN}[18/32] Installing kubectl ${NOCOLOR}"
+brew install kubectl 
+clear
 
 # ----------------------------------
 # Heroku CLI installation
 # ----------------------------------
-echo "${LIGHTGREEN}[20/35] Installing heroku-cli 💜${NOCOLOR}"
-curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
-heroku --version
+echo "${LIGHTGREEN}[19/32] Installing heroku-cli 💜${NOCOLOR}"
+brew tap heroku/brew && brew install heroku
+clear
 
 # ----------------------------------
 # AWS CLI installation
 # ----------------------------------
-echo "${LIGHTGREEN}[21/35] Installing aws-cli 💛'${NOCOLOR}"
-sudo apt-get install awscli -y
-aws --version
-curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
-sudo dpkg -i session-manager-plugin.deb
-session-manager-plugin --version
+echo "${LIGHTGREEN}[20/32] Installing aws-cli 💛'${NOCOLOR}"
+brew install awscli
+clear
 
 # ----------------------------------
-# Fzf installation
+# AWS Elastic Beanstalk CLI installation
 # ----------------------------------
-echo "${LIGHTGREEN}[22/35] Installing fzf 🔎${NOCOLOR}"
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install --all
-source ~/.zshrc
+echo "${LIGHTGREEN}[21/32] Installing awsebcli 🎯'${NOCOLOR}"
+brew install awsebcli
+clear
 
 # ----------------------------------
 # Dbeaver installation
 # ----------------------------------
-echo "${LIGHTGREEN}[23/35] Installing dbeaver ⌛${NOCOLOR}"
-wget -c https://dbeaver.io/files/6.0.0/dbeaver-ce_6.0.0_amd64.deb
-sudo dpkg -i dbeaver-ce_6.0.0_amd64.deb
-sudo apt-get install -f
+echo "${LIGHTGREEN}[22/32] Installing DBeaver ⌛${NOCOLOR}"
+brew install --cask dbeaver-community
+clear
+
+# ----------------------------------
+# Dbeaver installation
+# ----------------------------------
+echo "${LIGHTGREEN}[23/32] Installing Sequel Pro 🍯${NOCOLOR}"
+brew install --cask sequel-pro
 clear
 
 # ----------------------------------
 # Robo3t installation
 # ----------------------------------
-echo "${LIGHTGREEN}[24/35] Installing Robo3t 💚${NOCOLOR}"
-snap install robo3t-snap
+echo "${LIGHTGREEN}[24/32] Installing Robo3t 💚${NOCOLOR}"
+brew install --cask robo-3t
 clear
 
 # ----------------------------------
 # Insomnia installation
 # ----------------------------------
-echo "${LIGHTGREEN}[25/35] Installing Insomnia 🎱'${NOCOLOR}"
-echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" \
-| sudo tee -a /etc/apt/sources.list.d/insomnia.list
-wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc \
-| sudo apt-key add -
-sudo apt-get install insomnia
+echo "${LIGHTGREEN}[25/32] Installing Insomnia 🎱'${NOCOLOR}"
+brew install --cask insomnia
 clear
 
 # ----------------------------------
 # Postbird installation
 # ----------------------------------
-echo "${LIGHTGREEN}[26/35] Installing Postbird 🐘${NOCOLOR}"
-yes | sudo snap install postbird
-clear
-
-# ----------------------------------
-# VLC installation
-# ----------------------------------
-echo "${LIGHTGREEN}[27/35] Installing VLC ⏯${NOCOLOR}"
-sudo apt install vlc -y
-sudo apt install vlc-plugin-access-extra libbluray-bdj libdvdcss2 -y
-
-# ----------------------------------
-# Transmission installation
-# ----------------------------------
-echo "${LIGHTGREEN}[28/35] Installing Transmission 📩${NOCOLOR}"
-sudo add-apt-repository ppa:transmissionbt/ppa
-sudo apt-get update
-sudo apt-get install transmission transmission-qt -y
+echo "${LIGHTGREEN}[26/32] Installing Postbird 🐘${NOCOLOR}"
+brew install --cask postbird
 clear
 
 # ----------------------------------
 # GIMP installation
 # ----------------------------------
-echo "${LIGHTGREEN}[29/35] Installing GIMP 🖼${NOCOLOR}"
-yes | sudo add-apt-repository ppa:otto-kesselgulasch/gimp
-sudo apt-get update
-sudo apt-get install gimp gimp-gmic gmic -y
-sudo apt-get install gimp-plugin-registry -y
+echo "${LIGHTGREEN}[27/32] Installing GIMP 🖼${NOCOLOR}"
+brew install --cask gimp
 clear
 
 # ----------------------------------
 # Reactotron installation
 # ----------------------------------
-echo "${LIGHTGREEN}[30/35] Installing Reactotron ⚛${NOCOLOR}"
-wget -c https://github.com/infinitered/reactotron/releases/download/v2.17.1/reactotron-app_2.17.1_amd64.deb
-sudo dpkg -i reactotron-app_2.17.1_amd64.deb
+echo "${LIGHTGREEN}[28/32] Installing Reactotron ⚛${NOCOLOR}"
+brew install --cask reactotron
 clear
 
 # ----------------------------------
 # Discord installation
 # ----------------------------------
-echo "${LIGHTGREEN}[31/35] Installing Discord 💬${NOCOLOR}"
-sudo snap install discord --classic
-clear
-
-# ----------------------------------
-# Terminalizer installation
-# ----------------------------------
-echo "${LIGHTGREEN}[32/35] Installing Terminalizer 💅${NOCOLOR}"
-npm install -g terminalizer
-
-cat <<EOF > ~/.terminalizer
-command: null
-cwd: null
-env:
-  recording: true
-cols: auto
-rows: auto
-# Amount of times to repeat GIF
-# If value is -1, play once
-# If value is 0, loop indefinitely
-# If value is a positive number, loop n times
-repeat: 0
-quality: 100
-frameDelay: auto
-maxIdleTime: 2000
-frameBox:
-  type: floating
-  title: null
-  style:
-    border: 0px black solid
-watermark:
-  imagePath: null
-  style:
-    position: absolute
-    right: 15px
-    bottom: 15px
-    width: 100px
-    opacity: 0.9
-cursorStyle: block
-fontFamily: "Fira Code, Lucida Console, Ubuntu Mono, Monospace"
-fontSize: 14
-lineHeight: 1
-letterSpacing: 0
-theme:
-  background: "transparent"
-  foreground: "#afafaf"
-  cursor: "#c7c7c7"
-  black: "#232628"
-  red: "#fc4384"
-  green: "#b3e33b"
-  yellow: "#ffa727"
-  blue: "#75dff2"
-  magenta: "#ae89fe"
-  cyan: "#708387"
-  white: "#d5d5d0"
-  brightBlack: "#626566"
-  brightRed: "#ff7fac"
-  brightGreen: "#c8ed71"
-  brightYellow: "#ebdf86"
-  brightBlue: "#75dff2"
-  brightMagenta: "#ae89fe"
-  brightCyan: "#b1c6ca"
-  brightWhite: "#f9f9f4"
-EOF
-
+echo "${LIGHTGREEN}[29/32] Installing Discord 💬${NOCOLOR}"
+brew install --cask discord
 clear
 
 # ----------------------------------
 # Expo CLI installation
 # ----------------------------------
-echo "${LIGHTGREEN}[33/35] Installing Expo 📱${NOCOLOR}"
+echo "${LIGHTGREEN}[30/32] Installing Expo 📱${NOCOLOR}"
 npm install --global expo-cli
 clear
-
 
 # ----------------------------------
 # Vercel CLI installation
 # ----------------------------------
-echo "${LIGHTGREEN}[34/35] Installing Vercel CLI ⬆${NOCOLOR}"
+echo "${LIGHTGREEN}[31/32] Installing Vercel CLI ⬆${NOCOLOR}"
 npm install -g vercel
 clear
 
@@ -381,18 +260,8 @@ clear
 # ----------------------------------
 # OpenOffice installation
 # ----------------------------------
-echo "${LIGHTGREEN}[35/35] Installing OpenOffice 💻${NOCOLOR}"
-if [ `getconf LONG_BIT` = "64" ]
-then
-    wget http://ufpr.dl.sourceforge.net/project/openofficeorg.mirror/4.1.6/binaries/pt-BR/Apache_OpenOffice_4.1.6_Linux_x86-64_install-rpm_pt-BR.tar.gz -O openoffice.tar.gz
-
-else
-    wget http://ufpr.dl.sourceforge.net/project/openofficeorg.mirror/4.1.6/binaries/pt-BR/Apache_OpenOffice_4.1.6_Linux_x86_install-rpm_pt-BR.tar.gz -O openoffice.tar.gz
-fi
-
-tar -vzxf openoffice.tar.gz
-sudo rpm -i pt-BR/RPMS/*.rpm
-sudo rpm -i pt-BR/RPMS/desktop-integration/*.rpm
+echo "${LIGHTGREEN}[32/32] Installing OpenOffice 💻${NOCOLOR}"
+brew install --cask openoffice
 clear
 
 # ----------------------------------
@@ -406,104 +275,140 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
     echo "${LIGHTGREEN}Adding VSCode settings${NOCOLOR}"
 cat <<EOF >  ~/.config/Code/User/settings.json
 {
-  "terminal.integrated.fontSize": 14,
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.startupEditor": "newUntitledFile",
-  "editor.fontSize": 14,
-  "editor.fontFamily": "Fira Code",
-  "editor.fontLigatures": true,
-  "explorer.compactFolders": false,
-  "editor.renderLineHighlight": "gutter",
-  "workbench.editor.labelFormat": "short",
-  "extensions.ignoreRecommendations": true,
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "typescript.updateImportsOnFileMove.enabled": "never",
-  "breadcrumbs.enabled": true,
-  "editor.parameterHints.enabled": false,
-  "explorer.confirmDragAndDrop": false,
-  "explorer.confirmDelete": false,
-  "editor.rulers": [
-    80,
-    120
-  ],
-  "[javascript]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
+    "terminal.integrated.fontSize": 14,
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.fontSize": 14,
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "explorer.compactFolders": false,
+    "editor.renderLineHighlight": "gutter",
+    "workbench.editor.labelFormat": "short",
+    "extensions.ignoreRecommendations": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.updateImportsOnFileMove.enabled": "never",
+    "breadcrumbs.enabled": true,
+    "editor.parameterHints.enabled": false,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "editor.rulers": [
+      80,
+      120
+    ],
+    "typescript.tsdk": "/usr/local/lib/node_modules/typescript/lib",
+    "eslint.alwaysShowStatus": true,
+    "[javascript]": {
+      "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+        "source.fixAll": true
+      },
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-  "[javascriptreact]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
+    "[javascriptreact]": {
+      "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+        "source.fixAll": true
+      },
     },
-  },
-  "[typescript]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
+    "[typescript]": {
+      "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+        "source.fixAll": true
+      },
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-  "[typescriptreact]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
+    "[typescriptreact]": {
+      "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+        "source.fixAll": true
+      },
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-  "files.associations": {
-    ".sequelizerc": "javascript",
-    ".stylelintrc": "json",
-    ".prettierrc": "json"
-  },
-  "window.zoomLevel": 0,
-  "emmet.syntaxProfiles": {
-    "javascript": "jsx"
-  },
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact"
-  },
-  "gitlens.codeLens.recentChange.enabled": false,
-  "gitlens.codeLens.authors.enabled": false,
-  "gitlens.codeLens.enabled": false,
-  "git.enableSmartCommit": true,
-  "terminal.integrated.shell.osx": "/bin/zsh",
-  "liveshare.featureSet": "insiders",
-  "typescript.tsserver.log": "verbose",
-  "javascript.suggest.autoImports": true,
-  "typescript.suggest.autoImports": true,
-  "liveServer.settings.donotShowInfoMsg": true,
-  "material-icon-theme.activeIconPack": "nest",
-  "screencastMode.onlyKeyboardShortcuts": true,
-  "material-icon-theme.folders.associations": {
-    "infra": "app",
-    "entities": "class",
-    "schemas": "class",
-    "typeorm": "database",
-    "repositories": "mappings",
-    "http": "container",
-    "migrations": "tools",
-    "modules": "components",
-    "implementations": "core",
-    "dtos": "typescript",
-    "fakes": "mock",
-    "websockets": "pipe",
-    "protos": "pipe",
-    "grpc": "pipe",
-  },
-  "material-icon-theme.files.associations": {
-    "ormconfig.json": "database",
-    "tsconfig.json": "tune",
-    "*.proto": "3d",
-    "routes.ts": "routing"
-  },
-  "workbench.colorTheme": "Omni",
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "eslint.migration.2_x": "off",
-  "[shellscript]": {
-    "editor.defaultFormatter": "shakram02.bash-beautify"
-  },
-}
+    "files.associations": {
+      ".sequelizerc": "javascript",
+      ".stylelintrc": "json",
+      ".prettierrc": "json",
+    },
+    "emmet.includeLanguages": {
+      "javascript": "javascriptreact"
+    },
+    "gitlens.codeLens.recentChange.enabled": false,
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.codeLens.enabled": false,
+    "git.enableSmartCommit": true,
+    "terminal.integrated.shell.osx": "/bin/zsh",
+    "liveshare.featureSet": "insiders",
+    "typescript.tsserver.log": "verbose",
+    "typescript.tsc.autoDetect": "off",
+    "javascript.suggest.autoImports": true,
+    "typescript.suggest.autoImports": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "material-icon-theme.activeIconPack": "nest",
+    "screencastMode.onlyKeyboardShortcuts": true,
+    "material-icon-theme.folders.associations": {
+      "infra": "app",
+      "entities": "class",
+      "schemas": "class",
+      "typeorm": "database",
+      "repositories": "mappings",
+      "repository": "mappings",
+      "http": "container",
+      "migrations": "tools",
+      "modules": "components",
+      "implementations": "core",
+      "dtos": "typescript",
+      "fakes": "mock",
+      "websockets": "pipe",
+      "protos": "pipe",
+      "grpc": "pipe",
+      "csv-parser": "Lib",
+      "constants": "typescript",
+      "factory": "typescript",
+      "interfaces": "typescript",
+      "enums": "typescript",
+      "joi": "Json",
+      "fake_ftp": "database",
+      "entity": "database",   
+      "exceptions": "debug",
+      ".elasticbeanstalk": "aws",
+      "application": "app",
+      "domain": "meta",
+      "infrastructure": "server",
+      ".pgdata": "admin"
+    },
+    "material-icon-theme.files.associations": {
+      "ormconfig.json": "database",
+      "tsconfig.json": "tune",
+      "*.proto": "3d",
+      "routes.ts": "routing",
+      ".env.homolog": "tune",
+      ".env.hotfix": "tune",
+      "knexfile.ts": "database",
+      "knexfile.js": "database",
+      "ormconfig.js": "database",
+      "ormconfig.ts": "database"
+    },
+    "workbench.colorTheme": "Horizon",
+    "[html]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "eslint.migration.2_x": "off",
+    "[shellscript]": {
+      "editor.defaultFormatter": "shakram02.bash-beautify"
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+    "workbench.editor.showTabs": true,
+    "sonarlint.ls.javaHome": "/Users/leualmeida/.vscode/extensions/sonarsource.sonarlint_managed-jre/jre/jdk-11.0.10+9-jre/Contents/Home",
+    "cSpell.userWords": [
+      "plusplus",
+      "telemedicinaeinstein"
+    ],
+    "elixirLS.dialyzerEnabled": false,
+    "elixirLS.suggestSpecs": false,
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+  }
 EOF
     
     echo "${LIGHTGREEN}Installing VSCode Extensions${NOCOLOR}"
@@ -550,7 +455,7 @@ EOF
     code --install-extension xyc.vscode-mdx-preview
     code --install-extension yzhang.markdown-all-in-one
     
-    echo "${LIGHTGREEN}Installing Omni theme${NOCOLOR}"
+    echo "${LIGHTGREEN}Installing Omni theme on hyper${NOCOLOR}"
     git clone https://github.com/getomni/hyper-omni ~/.hyper_plugins/local/hyper-omni
     
     echo "${LIGHTGREEN}Installing Font Ligatures${NOCOLOR}"
@@ -628,7 +533,8 @@ EOF
     # ZSH Themes installation
     # ----------------------------------
     echo "${LIGHTGREEN}Installing ZSH theme settings${NOCOLOR}"
-    sudo apt install fonts-firacode -y
+    brew tap homebrew/cask-fonts
+    brew install --cask font-fira-code
     git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
     ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
     sed -i 's/.*ZSH_THEME=.*/ZSH_THEME="spaceship"/g' ~/.zshrc
@@ -679,9 +585,6 @@ fi
 # ----------------------------------
 echo "${LIGHTGREEN}Commiting changes 🎈${NOCOLOR}"
 source ~/.zshrc
-sudo dpkg --configure -a
-sudo apt-get update --fix-missing
-sudo apt-get autoremove
 
 clear
 
