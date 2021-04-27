@@ -35,11 +35,9 @@ sh startup.sh
 ## You'll be installing...
 
 ### Subtitles
-✅ - Available
-⚠️ - Unavailable
-❌ - Doesn't has support
+✅ - Available ⚠️ - Unavailable ❌ - Doesn't has support
 
-| App                    | Description                                                               | Linux | Debian | MacOS |
+| App                    | Description                                                               | Ubuntu | Debian | MacOS |
 |------------------------|---------------------------------------------------------------------------|-------|--------|-------|
 | Curl                   | Command line tool and library for transferring data with URLs             |   ✅   |   ⚠️   |   ✅  |
 | Homebrew               | Package management system                                                 |   ❌   |   ❌   |   ✅  |
