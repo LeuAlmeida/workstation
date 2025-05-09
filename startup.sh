@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # ----------------------------------
@@ -22,39 +21,64 @@ LIGHTCYAN='\033[1;36m'
 WHITE='\033[1;37m'
 
 # ----------------------------------
-# Validations
+# OS Detection
 # ----------------------------------
-
-case $OSTYPE in (*darwin*)
-    echo "${YELLOW}Are you using MacOS (y/n)?${NOCOLOR}"
-    read answer
-
-    if [ "$answer" != "${answer#[Yy]}" ] ;then
-        sh scripts/apple/macosx.sh
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    echo -ne "${YELLOW}Detectado macOS. Deseja continuar com a instalação? (y/n): ${NOCOLOR}"
+    read -r answer
+    if [[ "$answer" =~ ^[Yy]$ ]]; then
+        if [[ -f scripts/apple/macosx.sh ]]; then
+            bash scripts/apple/macosx.sh
+        else
+            echo -e "${RED}Script para macOS não encontrado.${NOCOLOR}"
+            exit 1
+        fi
+    else
+        echo -e "${LIGHTRED}Instalação abortada.${NOCOLOR}"
+        exit 0
     fi
-esac
+else
+    if ! command -v lsb_release &> /dev/null; then
+        echo -e "${ORANGE}lsb_release não encontrado. Instalando...${NOCOLOR}"
+        sudo apt update && sudo apt install -y lsb-release
+    fi
 
+    DISTRO=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
 
-OS=$(awk '/DISTRIB_ID=/' /etc/*-release | sed 's/DISTRIB_ID=//' | tr '[:upper:]' '[:lower:]')
-
-if [ -z "$OS" ]; then
-    OS=$(awk '{print $1}' /etc/*-release | tr '[:upper:]' '[:lower:]')
+    case "$DISTRO" in
+        ubuntu)
+            echo -ne "${YELLOW}Detectado Ubuntu. Deseja continuar com a instalação? (y/n): ${NOCOLOR}"
+            read -r answer
+            if [[ "$answer" =~ ^[Yy]$ ]]; then
+                if [[ -f scripts/linux/ubuntu.sh ]]; then
+                    bash scripts/linux/ubuntu.sh
+                else
+                    echo -e "${RED}Script para Ubuntu não encontrado.${NOCOLOR}"
+                    exit 1
+                fi
+            else
+                echo -e "${LIGHTRED}Instalação abortada.${NOCOLOR}"
+                exit 0
+            fi
+            ;;
+        debian)
+            echo -ne "${YELLOW}Detectado Debian. Deseja continuar com a instalação? (y/n): ${NOCOLOR}"
+            read -r answer
+            if [[ "$answer" =~ ^[Yy]$ ]]; then
+                if [[ -f scripts/linux/debian.sh ]]; then
+                    bash scripts/linux/debian.sh
+                else
+                    echo -e "${RED}Script para Debian não encontrado.${NOCOLOR}"
+                    exit 1
+                fi
+            else
+                echo -e "${LIGHTRED}Instalação abortada.${NOCOLOR}"
+                exit 0
+            fi
+            ;;
+        *)
+            echo -e "${LIGHTRED}Distribuição '$DISTRO' não suportada por este script.${NOCOLOR}"
+            exit 1
+            ;;
+    esac
 fi
-
-case $OS in (*ubuntu*)
-    echo -n "${YELLOW}Are you using Ubuntu (y/n)?${NOCOLOR}"
-    read answer
-    
-    if [ "$answer" != "${answer#[Yy]}" ] ;then
-        sh scripts/linux/ubuntu.sh
-    fi
-esac
-
-case $OS in (*debian*)
-    echo -n "${YELLOW}Are you using Debian (y/n)?${NOCOLOR}"
-    read answer
-    
-    if [ "$answer" != "${answer#[Yy]}" ] ;then
-        sh scripts/linux/debian.sh
-    fi
-esac
