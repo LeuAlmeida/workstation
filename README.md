@@ -4,10 +4,6 @@
 
 <h1 align="center">DEVELOPMENT WORKSTATION SETUP</h1>
 
-<blockquote align="center">
-This configs were made based on <a href="https://github.com/ErickWendel/ew-ubuntu-setup">Erick Wendel's setup</a> and my own needs as a Web Developer and other personal stuff.
-</blockquote>
-
 <p align="center">
   <img alt="License" src="https://img.shields.io/badge/license-MIT-%23FF5722">
 
@@ -83,14 +79,6 @@ sh startup.sh
 | Expo                   | A framework and a platform for universal React applications               | ✅ v6.0+ | ✅ v6.0+ | ✅ v6.0+ |
 | Vercel                 | Optimal workflow for frontend teams                                       | ✅ v31+ | ✅ v31+ | ✅ v31+ |
 | OpenOffice             | Open source office productivity software package                          | ✅ v4.1.6 | ✅ v4.1.6 | ✅ v4.1.13+ |
-
-## Authors
-
-- **Erick Wendel** - _Initial work_ - [Erick Wendel](https://github.com/ErickWendel)
-
-- **Olavio Lacerda** - Additions and modifications - [Olavio Lacerda](https://github.com/OlavioLacerda)
-
-- **Léu Almeida** - Additions and modifications - [Léu Almeida](https://github.com/LeuAlmeida)
 
 ## ToDo
 
