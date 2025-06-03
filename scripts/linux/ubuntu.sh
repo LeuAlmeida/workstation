@@ -354,6 +354,32 @@ check_installation() {
         return 1 # Postbird not installed
       fi
       ;;
+    python3)
+      if command_exists python3; then
+        local current_version=$(python3 --version 2>&1 | cut -d " " -f 2)
+        if [ -n "$required_version" ]; then
+          check_version "$package" "$current_version" "$required_version"
+          return $?
+        else
+          return 0 # Python exists and no version check needed
+        fi
+      else
+        return 1 # Python not installed
+      fi
+      ;;
+    conda)
+      if command_exists conda; then
+        local current_version=$(conda --version | cut -d " " -f 2)
+        if [ -n "$required_version" ]; then
+          check_version "$package" "$current_version" "$required_version"
+          return $?
+        else
+          return 0 # Conda exists and no version check needed
+        fi
+      else
+        return 1 # Conda not installed
+      fi
+      ;;
     *)
       if command_exists "$package"; then
         return 0 # Generic check if command exists
@@ -393,6 +419,52 @@ if ! command_exists curl; then
   handle_error $? "Failed to install curl"
 else
   echo "${GREEN}✓ Curl is already installed.${NOCOLOR}"
+fi
+
+# ----------------------------------
+# Python Installation
+# ----------------------------------
+show_progress "Installing Python and pip"
+if ! check_installation python3; then
+  echo "${BLUE}Installing Python and development tools...${NOCOLOR}"
+  sudo apt-get install python3 python3-dev python3-pip -y
+  handle_error $? "Failed to install Python" true
+else
+  echo "${GREEN}✓ Python is already installed: $(python3 --version)${NOCOLOR}"
+fi
+
+# Ensure pip is up to date
+echo "${BLUE}Upgrading pip...${NOCOLOR}"
+python3 -m pip install --upgrade pip
+handle_error $? "Failed to upgrade pip" true
+
+# ----------------------------------
+# Anaconda Installation
+# ----------------------------------
+show_progress "Installing Anaconda"
+if ! check_installation conda; then
+  echo "${BLUE}Downloading Anaconda installer...${NOCOLOR}"
+  ANACONDA_VERSION="2023.09-0"
+  wget -O anaconda.sh "https://repo.anaconda.com/archive/Anaconda3-${ANACONDA_VERSION}-Linux-x86_64.sh"
+  handle_error $? "Failed to download Anaconda" true
+  
+  echo "${BLUE}Installing Anaconda...${NOCOLOR}"
+  bash anaconda.sh -b -p $HOME/anaconda3
+  handle_error $? "Failed to install Anaconda" true
+  
+  # Add Anaconda to PATH
+  echo 'export PATH="$HOME/anaconda3/bin:$PATH"' >> ~/.zshrc
+  
+  # Initialize conda for zsh
+  echo "${BLUE}Initializing conda for zsh...${NOCOLOR}"
+  eval "$($HOME/anaconda3/bin/conda shell.zsh hook)"
+  $HOME/anaconda3/bin/conda init zsh
+  handle_error $? "Failed to initialize conda" true
+  
+  # Clean up
+  rm anaconda.sh
+else
+  echo "${GREEN}✓ Anaconda is already installed: $(conda --version)${NOCOLOR}"
 fi
 
 # ----------------------------------

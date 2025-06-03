@@ -43,6 +43,9 @@ sh startup.sh
 | Homebrew               | Package management system                                                 | ❌ | ❌ | ✅ v4.0.0+ |
 | XCode CL Tools         | Gives Mac terminal users many commonly used tools                         | ❌ | ❌ | ✅ v14+ |
 | Git                    | Free and open source distributed version control system                   | ✅ v2.40+ | ✅ v2.40+ | ✅ v2.40+ |
+| Python                 | High-level programming language                                           | ✅ v3.11+ | ✅ v3.11+ | ✅ v3.11+ |
+| pip                    | Package installer for Python                                              | ✅ v23.0+ | ✅ v23.0+ | ✅ v23.0+ |
+| Anaconda               | Distribution of Python/R for scientific computing                         | ✅ v23.3+ | ✅ v23.3+ | ✅ v23.3+ |
 | ZSH                    | UNIX command interpreter                                                  | ✅ v5.9+ | ✅ v5.9+ | ✅ v5.9+ |
 | Oh-My-Zsh              | Framework for managing your ZSH configuration                             | ✅ v0.123+ | ✅ v0.123+ | ✅ v0.123+ |
 | Xclip                  | Command line interface to the X11 clipboard                               | ✅ v0.13+ | ✅ v0.13+ | ⚠️ |

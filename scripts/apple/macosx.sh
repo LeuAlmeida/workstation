@@ -312,6 +312,32 @@ check_installation() {
         return 1 # kubectl not installed
       fi
       ;;
+    python3)
+      if command_exists python3; then
+        local current_version=$(python3 --version 2>&1 | cut -d " " -f 2)
+        if [ -n "$required_version" ]; then
+          check_version "$package" "$current_version" "$required_version"
+          return $?
+        else
+          return 0 # Python exists and no version check needed
+        fi
+      else
+        return 1 # Python not installed
+      fi
+      ;;
+    conda)
+      if command_exists conda; then
+        local current_version=$(conda --version | cut -d " " -f 2)
+        if [ -n "$required_version" ]; then
+          check_version "$package" "$current_version" "$required_version"
+          return $?
+        else
+          return 0 # Conda exists and no version check needed
+        fi
+      else
+        return 1 # Conda not installed
+      fi
+      ;;
     *)
       if command_exists "$package"; then
         return 0 # Generic check if command exists
@@ -356,16 +382,41 @@ else
 fi
 
 # ----------------------------------
-# Xcode Command Line Tools Installation
+# Python Installation
 # ----------------------------------
-show_progress "Installing Xcode Command Line Tools"
-if ! xcode-select -p &>/dev/null; then
-  echo "${BLUE}Installing Xcode Command Line Tools...${NOCOLOR}"
-  xcode-select --install
-  echo "${YELLOW}Please wait for Command Line Tools to install and press any key when it's completed...${NOCOLOR}"
-  read -n 1 -s
+show_progress "Installing Python and pip"
+if ! check_installation python3; then
+  echo "${BLUE}Installing Python...${NOCOLOR}"
+  brew install python
+  handle_error $? "Failed to install Python" true
 else
-  echo "${GREEN}✓ Xcode Command Line Tools are already installed.${NOCOLOR}"
+  echo "${GREEN}✓ Python is already installed: $(python3 --version)${NOCOLOR}"
+fi
+
+# Ensure pip is up to date
+echo "${BLUE}Upgrading pip...${NOCOLOR}"
+python3 -m pip install --upgrade pip
+handle_error $? "Failed to upgrade pip" true
+
+# ----------------------------------
+# Anaconda Installation
+# ----------------------------------
+show_progress "Installing Anaconda"
+if ! check_installation conda; then
+  echo "${BLUE}Installing Anaconda...${NOCOLOR}"
+  brew install --cask anaconda
+  handle_error $? "Failed to install Anaconda" true
+  
+  # Add Anaconda to PATH
+  echo 'export PATH="/usr/local/anaconda3/bin:$PATH"' >> ~/.zshrc
+  
+  # Initialize conda for zsh
+  echo "${BLUE}Initializing conda for zsh...${NOCOLOR}"
+  eval "$(/usr/local/anaconda3/bin/conda shell.zsh hook)"
+  conda init zsh
+  handle_error $? "Failed to initialize conda" true
+else
+  echo "${GREEN}✓ Anaconda is already installed: $(conda --version)${NOCOLOR}"
 fi
 
 # ----------------------------------
@@ -375,11 +426,11 @@ show_progress "Installing ZSH and Oh-My-ZSH"
 if ! check_installation zsh; then
   echo "${BLUE}Installing ZSH...${NOCOLOR}"
   brew install zsh
-  handle_error $? "Failed to install ZSH"
+  handle_error $? "Failed to install ZSH" true
   
   echo "${BLUE}Installing Oh-My-ZSH...${NOCOLOR}"
   sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended
-  handle_error $? "Failed to install Oh-My-ZSH"
+  handle_error $? "Failed to install Oh-My-ZSH" true
   
   chsh -s /bin/zsh
 else
@@ -388,7 +439,7 @@ else
   if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "${BLUE}Installing Oh-My-ZSH...${NOCOLOR}"
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended
-    handle_error $? "Failed to install Oh-My-ZSH"
+    handle_error $? "Failed to install Oh-My-ZSH" true
   else
     echo "${GREEN}✓ Oh-My-ZSH is already installed.${NOCOLOR}"
   fi
@@ -402,7 +453,7 @@ if ! command_exists code; then
   echo "${BLUE}Installing Visual Studio Code...${NOCOLOR}"
   brew update
   brew install --cask visual-studio-code
-  handle_error $? "Failed to install Visual Studio Code"
+  handle_error $? "Failed to install Visual Studio Code" true
 else
   echo "${GREEN}✓ Visual Studio Code is already installed.${NOCOLOR}"
 fi
@@ -414,7 +465,7 @@ show_progress "Installing Spotify 🎵"
 if ! command_exists spotify; then
   echo "${BLUE}Installing Spotify...${NOCOLOR}"
   brew install --cask spotify
-  handle_error $? "Failed to install Spotify"
+  handle_error $? "Failed to install Spotify" true
 else
   echo "${GREEN}✓ Spotify is already installed.${NOCOLOR}"
 fi
@@ -426,7 +477,7 @@ show_progress "Installing Google Chrome 🖥"
 if ! command_exists google-chrome || ! command_exists "Google Chrome"; then
   echo "${BLUE}Installing Google Chrome...${NOCOLOR}"
   brew install --cask google-chrome
-  handle_error $? "Failed to install Google Chrome"
+  handle_error $? "Failed to install Google Chrome" true
 else
   echo "${GREEN}✓ Google Chrome is already installed.${NOCOLOR}"
 fi
@@ -440,7 +491,7 @@ if [ ! -d "$HOME/.nvm" ]; then
   LATEST_NVM=$(curl -s https://api.github.com/repos/nvm-sh/nvm/releases/latest | grep tag_name | cut -d '"' -f 4)
   echo "${BLUE}Installing NVM version $LATEST_NVM...${NOCOLOR}"
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$LATEST_NVM/install.sh | bash
-  handle_error $? "Failed to install NVM"
+  handle_error $? "Failed to install NVM" true
   
   # Set up NVM environment for immediate use
   export NVM_DIR="$HOME/.nvm"
@@ -474,7 +525,7 @@ if command_exists nvm; then
   if ! nvm ls $NODE_LTS_VERSION >/dev/null 2>&1; then
     echo "${BLUE}Installing Node.js LTS (v$NODE_LTS_VERSION)...${NOCOLOR}"
     nvm install $NODE_LTS_VERSION
-    handle_error $? "Failed to install Node.js LTS"
+    handle_error $? "Failed to install Node.js LTS" true
     nvm alias default $NODE_LTS_VERSION
     echo "${GREEN}Node.js $(node --version) and npm $(npm --version) installed.${NOCOLOR}"
   else
@@ -495,7 +546,7 @@ if command_exists npm; then
   if ! command_exists tsc; then
     echo "${BLUE}Installing TypeScript...${NOCOLOR}"
     npm install -g typescript
-    handle_error $? "Failed to install TypeScript"
+    handle_error $? "Failed to install TypeScript" true
   else
     echo "${GREEN}✓ TypeScript is already installed: $(tsc --version)${NOCOLOR}"
   fi
@@ -511,7 +562,7 @@ show_progress "Installing Create React App ⚡"
 if ! check_installation create-react-app; then
   echo "${BLUE}Installing Create React App...${NOCOLOR}"
   npm install -g create-react-app
-  handle_error $? "Failed to install Create React App"
+  handle_error $? "Failed to install Create React App" true
 else
   echo "${GREEN}✓ Create React App is already installed.${NOCOLOR}"
 fi
@@ -523,7 +574,7 @@ show_progress "Installing GatsbyJS ⚡"
 if ! check_installation gatsby; then
   echo "${BLUE}Installing GatsbyJS...${NOCOLOR}"
   npm install -g gatsby-cli
-  handle_error $? "Failed to install GatsbyJS"
+  handle_error $? "Failed to install GatsbyJS" true
 else
   echo "${GREEN}✓ GatsbyJS is already installed.${NOCOLOR}"
 fi
@@ -535,7 +586,7 @@ show_progress "Installing Yarn ⚡"
 if ! check_installation yarn; then
   echo "${BLUE}Installing Yarn...${NOCOLOR}"
   npm install --global yarn
-  handle_error $? "Failed to install Yarn"
+  handle_error $? "Failed to install Yarn" true
 else
   echo "${GREEN}✓ Yarn is already installed: $(yarn --version)${NOCOLOR}"
 fi
@@ -547,7 +598,7 @@ show_progress "Installing React Native CLI 📲"
 if ! check_installation react-native; then
   echo "${BLUE}Installing React Native CLI...${NOCOLOR}"
   npm install -g react-native-cli
-  handle_error $? "Failed to install React Native CLI"
+  handle_error $? "Failed to install React Native CLI" true
 else
   echo "${GREEN}✓ React Native CLI is already installed.${NOCOLOR}"
 fi
@@ -559,7 +610,7 @@ show_progress "Installing Hyper"
 if ! command_exists hyper; then
   echo "${BLUE}Installing Hyper...${NOCOLOR}"
   brew install --cask hyper
-  handle_error $? "Failed to install Hyper"
+  handle_error $? "Failed to install Hyper" true
 else
   echo "${GREEN}✓ Hyper is already installed.${NOCOLOR}"
 fi
@@ -571,7 +622,7 @@ show_progress "Installing Docker 🐳"
 if ! check_installation docker; then
   echo "${BLUE}Installing Docker...${NOCOLOR}"
   brew install --cask docker
-  handle_error $? "Failed to install Docker"
+  handle_error $? "Failed to install Docker" true
   
   echo "${BLUE}Starting Docker...${NOCOLOR}"
   open -a Docker
@@ -602,10 +653,10 @@ if ! check_installation docker-compose; then
   echo "${BLUE}Latest Docker Compose version: $LATEST_COMPOSE${NOCOLOR}"
   
   sudo curl -L "https://github.com/docker/compose/releases/download/$LATEST_COMPOSE/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-  handle_error $? "Failed to download Docker Compose"
+  handle_error $? "Failed to download Docker Compose" true
   
   sudo chmod +x /usr/local/bin/docker-compose
-  handle_error $? "Failed to make Docker Compose executable"
+  handle_error $? "Failed to make Docker Compose executable" true
   
   echo "${GREEN}Docker Compose $(docker-compose --version | cut -d ' ' -f 3 | tr -d ',') installed successfully.${NOCOLOR}"
 else
@@ -619,7 +670,7 @@ show_progress "Installing kubectl ⏹"
 if ! check_installation kubectl; then
   echo "${BLUE}Installing kubectl...${NOCOLOR}"
   brew install kubectl
-  handle_error $? "Failed to install kubectl"
+  handle_error $? "Failed to install kubectl" true
   
   echo "${GREEN}kubectl $(kubectl version --client --short 2>/dev/null | cut -d ' ' -f 3 || echo 'unknown') installed successfully.${NOCOLOR}"
 else
@@ -633,7 +684,7 @@ show_progress "Installing Heroku CLI 💜"
 if ! check_installation heroku; then
   echo "${BLUE}Installing Heroku CLI...${NOCOLOR}"
   brew tap heroku/brew && brew install heroku
-  handle_error $? "Failed to install Heroku CLI"
+  handle_error $? "Failed to install Heroku CLI" true
   
   echo "${GREEN}Heroku CLI $(heroku --version 2>/dev/null | head -n 1 | cut -d '/' -f 2 | cut -d ' ' -f 1 || echo 'unknown') installed successfully.${NOCOLOR}"
 else
@@ -647,7 +698,7 @@ show_progress "Installing AWS CLI 💛"
 if ! check_installation aws; then
   echo "${BLUE}Installing AWS CLI...${NOCOLOR}"
   brew install awscli
-  handle_error $? "Failed to install AWS CLI"
+  handle_error $? "Failed to install AWS CLI" true
   
   echo "${GREEN}AWS CLI $(aws --version 2>&1 | cut -d ' ' -f 1 | cut -d '/' -f 2 || echo 'unknown') installed successfully.${NOCOLOR}"
 else
@@ -661,7 +712,7 @@ show_progress "Installing AWS Elastic Beanstalk CLI 🎯"
 if ! command_exists eb; then
   echo "${BLUE}Installing AWS Elastic Beanstalk CLI...${NOCOLOR}"
   brew install awsebcli
-  handle_error $? "Failed to install AWS Elastic Beanstalk CLI"
+  handle_error $? "Failed to install AWS Elastic Beanstalk CLI" true
 else
   echo "${GREEN}✓ AWS Elastic Beanstalk CLI is already installed.${NOCOLOR}"
 fi
@@ -673,7 +724,7 @@ show_progress "Installing DBeaver ⌛"
 if ! command_exists dbeaver; then
   echo "${BLUE}Installing DBeaver...${NOCOLOR}"
   brew install --cask dbeaver-community
-  handle_error $? "Failed to install DBeaver"
+  handle_error $? "Failed to install DBeaver" true
 else
   echo "${GREEN}✓ DBeaver is already installed.${NOCOLOR}"
 fi
@@ -685,7 +736,7 @@ show_progress "Installing Sequel Pro 🍯"
 if ! command_exists "Sequel Pro"; then
   echo "${BLUE}Installing Sequel Pro...${NOCOLOR}"
   brew install --cask sequel-pro
-  handle_error $? "Failed to install Sequel Pro"
+  handle_error $? "Failed to install Sequel Pro" true
 else
   echo "${GREEN}✓ Sequel Pro is already installed.${NOCOLOR}"
 fi
@@ -697,7 +748,7 @@ show_progress "Installing Robo3t 💚"
 if ! command_exists robo3t; then
   echo "${BLUE}Installing Robo3t...${NOCOLOR}"
   brew install --cask robo-3t
-  handle_error $? "Failed to install Robo3t"
+  handle_error $? "Failed to install Robo3t" true
 else
   echo "${GREEN}✓ Robo3t is already installed.${NOCOLOR}"
 fi
@@ -709,7 +760,7 @@ show_progress "Installing Insomnia 🎱"
 if ! command_exists insomnia; then
   echo "${BLUE}Installing Insomnia...${NOCOLOR}"
   brew install --cask insomnia
-  handle_error $? "Failed to install Insomnia"
+  handle_error $? "Failed to install Insomnia" true
 else
   echo "${GREEN}✓ Insomnia is already installed.${NOCOLOR}"
 fi
@@ -721,7 +772,7 @@ show_progress "Installing Postbird 🐘"
 if ! command_exists postbird; then
   echo "${BLUE}Installing Postbird...${NOCOLOR}"
   brew install --cask postbird
-  handle_error $? "Failed to install Postbird"
+  handle_error $? "Failed to install Postbird" true
 else
   echo "${GREEN}✓ Postbird is already installed.${NOCOLOR}"
 fi
@@ -733,7 +784,7 @@ show_progress "Installing GIMP 🖼"
 if ! command_exists gimp; then
   echo "${BLUE}Installing GIMP...${NOCOLOR}"
   brew install --cask gimp
-  handle_error $? "Failed to install GIMP"
+  handle_error $? "Failed to install GIMP" true
 else
   echo "${GREEN}✓ GIMP is already installed.${NOCOLOR}"
 fi
@@ -745,7 +796,7 @@ show_progress "Installing Reactotron ⚛"
 if ! command_exists reactotron; then
   echo "${BLUE}Installing Reactotron...${NOCOLOR}"
   brew install --cask reactotron
-  handle_error $? "Failed to install Reactotron"
+  handle_error $? "Failed to install Reactotron" true
 else
   echo "${GREEN}✓ Reactotron is already installed.${NOCOLOR}"
 fi
@@ -757,7 +808,7 @@ show_progress "Installing Discord 💬"
 if ! command_exists discord; then
   echo "${BLUE}Installing Discord...${NOCOLOR}"
   brew install --cask discord
-  handle_error $? "Failed to install Discord"
+  handle_error $? "Failed to install Discord" true
 else
   echo "${GREEN}✓ Discord is already installed.${NOCOLOR}"
 fi
@@ -769,7 +820,7 @@ show_progress "Installing Expo CLI 📱"
 if ! command_exists expo; then
   echo "${BLUE}Installing Expo CLI...${NOCOLOR}"
   npm install --global expo-cli
-  handle_error $? "Failed to install Expo CLI"
+  handle_error $? "Failed to install Expo CLI" true
 else
   echo "${GREEN}✓ Expo CLI is already installed.${NOCOLOR}"
 fi
@@ -781,7 +832,7 @@ show_progress "Installing Vercel CLI ⬆"
 if ! command_exists vercel; then
   echo "${BLUE}Installing Vercel CLI...${NOCOLOR}"
   npm install -g vercel
-  handle_error $? "Failed to install Vercel CLI"
+  handle_error $? "Failed to install Vercel CLI" true
 else
   echo "${GREEN}✓ Vercel CLI is already installed.${NOCOLOR}"
 fi
@@ -793,7 +844,7 @@ show_progress "Installing OpenOffice 💻"
 if ! command_exists soffice; then
   echo "${BLUE}Installing OpenOffice...${NOCOLOR}"
   brew install --cask openoffice
-  handle_error $? "Failed to install OpenOffice"
+  handle_error $? "Failed to install OpenOffice" true
 else
   echo "${GREEN}✓ OpenOffice is already installed.${NOCOLOR}"
 fi
