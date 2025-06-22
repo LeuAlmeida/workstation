@@ -1702,6 +1702,7 @@ npm install -g ts-node
 npm install -g nodemon
 npm install -g @nestjs/cli
 npm install -g serve
+npm install -g n8n
 
 clear
 

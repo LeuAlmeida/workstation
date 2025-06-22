@@ -30,7 +30,7 @@ WHITE='\033[1;37m'
 # ----------------------------------
 # Global variables
 # ----------------------------------
-TOTAL_STEPS=36
+TOTAL_STEPS=38
 CURRENT_STEP=0
 LOG_FILE="/tmp/workstation_setup_$(date +%Y%m%d%H%M%S).log"
 ERROR_COUNT=0
@@ -503,4 +503,31 @@ clear
 echo "${ORANGE}What email do you want to use in GIT user.email?"
 echo "For example, mine will be '${ORANGE}leo@webid.net.br'${NOCOLOR}"
 read git_config_user_email
-git config
+git config --global user.email "$git_config_user_email"
+
+# ----------------------------------
+# NodeJS and NPM installation
+# ----------------------------------
+show_progress "Installing Node.js and npm"
+if ! check_installation node; then
+  echo "${BLUE}Installing Node.js and npm...${NOCOLOR}"
+  curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+  handle_error $? "Failed to add Node.js repository"
+  
+  sudo apt-get install -y nodejs
+  handle_error $? "Failed to install Node.js"
+else
+  echo "${GREEN}✓ Node.js is already installed: $(node --version)${NOCOLOR}"
+fi
+
+# ----------------------------------
+# n8n installation
+# ----------------------------------
+show_progress "Installing n8n ⚡"
+if ! command_exists n8n; then
+  echo "${BLUE}Installing n8n...${NOCOLOR}"
+  npm install -g n8n
+  handle_error $? "Failed to install n8n" true
+else
+  echo "${GREEN}✓ n8n is already installed.${NOCOLOR}"
+fi

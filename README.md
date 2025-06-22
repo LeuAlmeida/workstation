@@ -78,6 +78,7 @@ sh startup.sh
 | Terminalizer           | Record your terminal and generate animated gif images                     | ✅ v0.9.0+ | ✅ v0.9.0+ | ⚠️ |
 | Expo                   | A framework and a platform for universal React applications               | ✅ v6.0+ | ✅ v6.0+ | ✅ v6.0+ |
 | Vercel                 | Optimal workflow for frontend teams                                       | ✅ v31+ | ✅ v31+ | ✅ v31+ |
+| n8n                    | Workflow automation tool                                                  | ✅ v1.0+ | ✅ v1.0+ | ✅ v1.0+ |
 | OpenOffice             | Open source office productivity software package                          | ✅ v4.1.6 | ✅ v4.1.6 | ✅ v4.1.13+ |
 
 ## ToDo

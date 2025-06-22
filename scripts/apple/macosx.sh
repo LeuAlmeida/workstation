@@ -30,7 +30,7 @@ WHITE='\033[1;37m'
 # ----------------------------------
 # Global variables
 # ----------------------------------
-TOTAL_STEPS=32
+TOTAL_STEPS=33
 CURRENT_STEP=0
 LOG_FILE="/tmp/workstation_setup_$(date +%Y%m%d%H%M%S).log"
 ERROR_COUNT=0
@@ -835,6 +835,18 @@ if ! command_exists vercel; then
   handle_error $? "Failed to install Vercel CLI" true
 else
   echo "${GREEN}✓ Vercel CLI is already installed.${NOCOLOR}"
+fi
+
+# ----------------------------------
+# n8n installation
+# ----------------------------------
+show_progress "Installing n8n ⚡"
+if ! command_exists n8n; then
+  echo "${BLUE}Installing n8n...${NOCOLOR}"
+  npm install -g n8n
+  handle_error $? "Failed to install n8n" true
+else
+  echo "${GREEN}✓ n8n is already installed.${NOCOLOR}"
 fi
 
 # ----------------------------------
